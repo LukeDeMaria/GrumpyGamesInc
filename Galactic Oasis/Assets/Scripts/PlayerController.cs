@@ -24,18 +24,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Checking for wasd input
+        // Checking for wasd input 
         forwardInput = Input.GetAxis("Vertical");
         sidewaysInput = Input.GetAxis("Horizontal");
         // Move forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * sidewaysInput);
+        playerRb.position += forwardInput * transform.forward * Time.deltaTime * speed;
+        playerRb.position += sidewaysInput * transform.right * Time.deltaTime * speed;
         if (Input.GetKeyDown(KeyCode.Space) && touchingGround)
          {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             touchingGround = false;
          }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
