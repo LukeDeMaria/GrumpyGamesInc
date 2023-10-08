@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour
+public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
+    public Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,6 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + new Vector3(0, 4, -7);  
+        transform.position = player.transform.position + offset;  
     }
 }
