@@ -51,5 +51,6 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         touchingGround = true;
+        hasDived = false;
     }
 }
