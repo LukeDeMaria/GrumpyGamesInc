@@ -8,12 +8,15 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jumpForce;
+    public float diveForce;
     public float gravityModifier;
 
     public float forwardInput;
     public float sidewaysInput;
 
     public bool touchingGround = true;
+    public bool hasDived = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,13 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             touchingGround = false;
          }
+        if (Input.GetKeyDown(KeyCode.LeftShift) && hasDived == false)
+        {
+            playerRb.AddForce(Vector3.up * diveForce, ForceMode.Impulse);
+            touchingGround = false;
+            hasDived = true;
+        }
+
     }
 
 
