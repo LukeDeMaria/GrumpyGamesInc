@@ -19,16 +19,46 @@ public class PlayerController : MonoBehaviour
     public bool touchingGround = true;
     public bool hasDashed = false;
 
+    //for camera
+    Vector3 moveDirection;
+    public Transform orientation;
+
+    //ground check
+    public LayerMask whatIsGround;
+    bool grounded;
+    public float groundDrag; 
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+
+        //for the camera
+        playerRb.freezeRotation = true; 
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, 0.7f, whatIsGround);
+        //handleDrag
+        if (grounded)
+        {
+            playerRb.drag = groundDrag;
+        } else
+        {
+            playerRb.drag = 0; 
+        }
+        //camera
+        MyInput();
+        /*
         // Checking for wasd input
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         if (hasDashed == false)
@@ -54,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 playerRb.AddForce(transform.forward * (dashSpeed * 2), ForceMode.Impulse);
             }*/
             /*else
-            {*/
+            {
                 playerRb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
             //}
             touchingGround = false;
@@ -74,10 +104,22 @@ public class PlayerController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
         }
-
+        */
     }
 
+    private void MyInput()
+    {
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+    }
 
+    private void MovePlayer()
+    {
+        //calc move direction
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+        playerRb.AddForce(moveDirection.normalized * speed * 10f, ForceMode.Force);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         touchingGround = true;
