@@ -29,13 +29,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Checking for wasd input 
+        // Checking for wasd input
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        if (hasDashed == false)
+        {
         verticalInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        
         // Move forward
-        playerRb.position += verticalInput * transform.forward * Time.deltaTime * speed;
-        playerRb.position += horizontalInput * transform.right * Time.deltaTime * speed;
+
+            playerRb.position += verticalInput * transform.forward * Time.deltaTime * speed;
+            playerRb.position += horizontalInput * transform.right * Time.deltaTime * speed;
+        }
         if (Input.GetKeyDown(KeyCode.Space) && touchingGround)
          {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -44,14 +49,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
         {
             playerRb.AddForce(Vector3.up * dashForce, ForceMode.Impulse);
-            if (verticalInput == 0 || horizontalInput == 0)
+            /*if (verticalInput == 0 || horizontalInput == 0)
             {
                 playerRb.AddForce(transform.forward * (dashSpeed * 2), ForceMode.Impulse);
-            }
-            else
-            {
+            }*/
+            /*else
+            {*/
                 playerRb.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
-            }
+            //}
             touchingGround = false;
             hasDashed = true;
         }
