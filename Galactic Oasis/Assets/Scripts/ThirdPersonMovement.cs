@@ -20,7 +20,11 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
 
-    public float jumpHeight = 3f; 
+    public float jumpHeight = 3f;
+
+    bool hasDashed = false;
+    public float dashVertForce = 1.5f;
+    public float dashHorizForce = 1.5f; 
 
     // Update is called once per frame
     void Update()
@@ -32,27 +36,39 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
-
-        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-
-        if(direction.magnitude >= 0.1f)
+        if (!hasDashed)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
+            Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
-            Vector3 moveDir = Quaternion.Euler(0f ,targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            }
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime); 
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y += Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
+        {
+            
+            velocity.y += Mathf.Sqrt(dashVertForce * -2f * gravity);
+            hasDashed = true;
+        }
     }
+
+    
 }
