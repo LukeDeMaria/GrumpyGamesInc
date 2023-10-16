@@ -5,11 +5,11 @@ using UnityEngine;
 public class RocketPartFunc : MonoBehaviour
 {
 
-    private BarrierDestroy barrierDestroy; 
+    private BarrierDestroy barrierDestroy;
 
     void Start()
     {
-        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>(); 
+        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
     }
 
     void Update()
