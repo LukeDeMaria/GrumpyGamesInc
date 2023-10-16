@@ -16,7 +16,7 @@ public class BarrierDestroy : MonoBehaviour
 
     void Update()
     {
-        if(rocketPartsHad == rocketPartsNeeded)
+        if(rocketPartsHad >= rocketPartsNeeded)
         {
             Destroy(gameObject); 
         }
