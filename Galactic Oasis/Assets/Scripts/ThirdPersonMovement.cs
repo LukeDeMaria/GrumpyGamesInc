@@ -26,32 +26,31 @@ public class ThirdPersonMovement : MonoBehaviour
     public float jumpHeight = 3f;
 
     bool hasDashed = false;
-    public float dashJumpForce = 1.5f;
-    public float dashHorizForce = 1.5f; 
+    public float dashForce;
+    public float dashSpeed; 
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded == true)
-        {
-            hasDashed = false;
-        }
+        hasDashed = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(isGrounded == true && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        
 
         if (direction.magnitude >= 0.1f)
         {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
         }
@@ -60,16 +59,19 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
-
-            
-
-           
-
-
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
-
         }
+
+        Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        
+        
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        
+
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+        
 
         if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
@@ -79,7 +81,8 @@ public class ThirdPersonMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
         {
             
-            velocity.y += Mathf.Sqrt(dashJumpForce * -2f * gravity);
+            velocity.y += Mathf.Sqrt(dashForce * -2f * gravity);
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
             hasDashed = true;
         }
     }
