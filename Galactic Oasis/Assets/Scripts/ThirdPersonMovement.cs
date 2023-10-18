@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -18,18 +19,28 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    bool isGrounded;
 
+    bool isGrounded;
+    bool hasDashed = false;
     
     public float jumpHeight = 3f;
+    public float dashHeight;
+    public float dashSpeed;
+    public float dashTime;
+
+    Vector3 moveDir = new Vector3();
 
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (isGrounded == true)
+        {
+            hasDashed = false;
+        }
 
-        if(isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -40,7 +51,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -57,10 +68,29 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
+        {
+            velocity.y = Mathf.Sqrt(dashHeight * -2f * gravity);
+            StartCoroutine(Dash());
+            hasDashed = true;
+        }
+
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+
+        while(Time.time < startTime + dashTime)
+        {
+            controller.Move(moveDir * dashSpeed * Time.deltaTime);
+
+            yield return null;
+        }
     }
 
 
