@@ -68,6 +68,8 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
 
+        if (horizontalInput > 0.00)
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
         {
             velocity.y = Mathf.Sqrt(dashHeight * -2f * gravity);
@@ -85,7 +87,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         float startTime = Time.time;
 
-        while(Time.time < startTime + dashTime)
+        while(Time.time < startTime + dashTime )
         {
             controller.Move(moveDir * dashSpeed * Time.deltaTime);
 
