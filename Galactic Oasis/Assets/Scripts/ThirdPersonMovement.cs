@@ -68,7 +68,7 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
         }
 
-        if (horizontalInput > 0.00)
+       // if (horizontalInput > 0.00)
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
         {
