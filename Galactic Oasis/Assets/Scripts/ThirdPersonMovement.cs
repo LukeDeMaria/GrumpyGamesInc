@@ -7,7 +7,8 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
-
+    public int health;
+    killzoneRb = GameObject.Find("Killzone").GetComponent<Rigidbody>();
     public float speed;
 
     public float turnSmoothTime = 0.1f;
@@ -24,8 +25,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public float killzoneDistance = 0.4f;
     public LayerMask killzoneMask;
 
-    bool isGrounded;
-    bool hasDashed = false;
+    public bool isGrounded;
+    public bool touchingKillzone;
+    public bool hasDashed = false;
     
     public float jumpHeight = 3f;
     public float dashHeight;
@@ -44,10 +46,10 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = false;
         }
 
-        //touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, groundMask);
-        if (isGrounded == true)
+        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
+        if (touchingKillzone == true)
         {
-            hasDashed = false;
+            health = 0;
         }
 
         if (isGrounded && velocity.y < 0)
@@ -91,6 +93,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
     }
 
     IEnumerator Dash()
