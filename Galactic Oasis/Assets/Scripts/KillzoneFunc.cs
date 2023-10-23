@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class KillzoneFunc : MonoBehaviour
 {
-    public int health;
-
+    public ThirdPersonMovement playerHealth = new ThirdPersonMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +15,10 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        playerHealth.health = 0;
     }
 }
