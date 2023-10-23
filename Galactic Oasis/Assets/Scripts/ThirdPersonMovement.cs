@@ -44,7 +44,7 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = false;
         }
 
-        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, groundMask);
+        //touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, groundMask);
         if (isGrounded == true)
         {
             hasDashed = false;
