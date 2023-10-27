@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public GameObject sword; 
+    public GameObject sword;
+    public GameObject player;
     public float attackMinTime = 1.5f;
-    public float attackMaxTime = 5.5f; 
+    public float attackMaxTime = 5.5f;
 
     // Start is called before the first frame update
     void Start()

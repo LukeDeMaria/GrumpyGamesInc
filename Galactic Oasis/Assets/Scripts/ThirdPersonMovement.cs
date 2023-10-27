@@ -6,6 +6,7 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public GameObject enemySword;
     public Transform cam;
     public int health;
     //killzoneRb = GameObject.Find("Killzone").GetComponent<Rigidbody>();
