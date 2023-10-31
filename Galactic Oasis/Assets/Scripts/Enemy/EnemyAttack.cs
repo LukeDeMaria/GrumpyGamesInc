@@ -9,6 +9,10 @@ public class EnemyAttack : MonoBehaviour
     public float attackMinTime = 1.5f;
     public float attackMaxTime = 5.5f;
 
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask playerLayer; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +29,20 @@ public class EnemyAttack : MonoBehaviour
     {
         Animator anim = sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
+
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        
+        foreach(Collider player in hitPlayer)
+        {
+            Debug.Log("HIT!");
+        }
+
         float attackTime = Random.Range(attackMinTime, attackMaxTime);
         Invoke("SwordAttack", attackTime);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
     }
 }
