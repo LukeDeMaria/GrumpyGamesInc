@@ -30,13 +30,14 @@ public class EnemyAttack : MonoBehaviour
         Animator anim = sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
 
-        //brackeys tutorial 
+        //brackeys melee combat tutorial 
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         
         foreach(Collider player in hitPlayer)
         {
             Debug.Log("HIT!");
         }
+
 
         float attackTime = Random.Range(attackMinTime, attackMaxTime);
         Invoke("SwordAttack", attackTime);
