@@ -30,6 +30,7 @@ public class EnemyAttack : MonoBehaviour
         Animator anim = sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
 
+        //brackeys tutorial 
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         
         foreach(Collider player in hitPlayer)
