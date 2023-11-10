@@ -500,7 +500,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9012915200617251544}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -546,7 +546,9 @@ MonoBehaviour:
   controller: {fileID: 9012915200617251525}
   enemySword: {fileID: 0}
   cam: {fileID: 0}
-  health: 5
+  maxHealth: 8
+  currentHealth: 0
+  healthBar: {fileID: 0}
   speed: 13
   turnSmoothTime: 0.1
   gravity: -48.8
@@ -575,4 +577,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSword: {fileID: 9012915200569060393}
   canAttack: 1
-  attackCooldown: 1
+  attackCooldown: 0
