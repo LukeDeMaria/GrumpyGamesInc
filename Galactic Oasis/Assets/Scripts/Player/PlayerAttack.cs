@@ -7,7 +7,11 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject playerSword;
     public bool canAttack = true;
-    public float attackCooldown = .5f; 
+    public float attackCooldown = .5f;
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
     void Start()
     {
@@ -30,6 +34,14 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
         Animator anim = playerSword.GetComponent<Animator>();
         anim.SetTrigger("PlayerAttack");
+
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers); 
+        
+        foreach(Collider enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+        }
+
         StartCoroutine(ResetAttackCooldown());
     }
 
