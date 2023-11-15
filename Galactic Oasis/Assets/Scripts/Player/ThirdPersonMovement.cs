@@ -108,7 +108,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
