@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public GameObject sword;
     public GameObject player;
+    public ThirdPersonMovement tpm;
     public float attackMinTime = 1.5f;
     public float attackMaxTime = 5.5f;
 
@@ -36,6 +37,8 @@ public class EnemyAttack : MonoBehaviour
         foreach(Collider player in hitPlayer)
         {
             Debug.Log("HIT!");
+            tpm.TakeDamage(1);
+
         }
 
 
