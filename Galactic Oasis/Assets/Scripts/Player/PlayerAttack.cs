@@ -31,24 +31,17 @@ public class PlayerAttack : MonoBehaviour
 
     public void SwordAttack()
     {
-        canAttack = false;
+        //canAttack = false;
         Animator anim = playerSword.GetComponent<Animator>();
         anim.SetTrigger("PlayerAttack");
 
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers); 
-        
-        foreach(Collider enemy in hitEnemies)
-        {
-            Debug.Log("We hit " + enemy.name);
-        }
-
-        StartCoroutine(ResetAttackCooldown());
+        SwordFunct();
     }
 
     IEnumerator ResetAttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldown);
-        canAttack = true;
+        //canAttack = true;
     }
 
     void OnDrawGizmosSelected()
@@ -59,6 +52,17 @@ public class PlayerAttack : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    public void SwordFunct()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+        }
+
     }
 }
 
