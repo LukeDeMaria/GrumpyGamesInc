@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0.931, y: 0.63, z: 0}
   m_LocalScale: {x: 0.25, y: 2.03, z: 0.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1869272163}
   m_Father: {fileID: 1967982272}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,6 +120,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1869272162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1869272163}
+  m_Layer: 0
+  m_Name: EnemyAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1869272163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869272162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.058, z: -0.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 377880696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1967982271
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +282,7 @@ GameObject:
   - component: {fileID: 1521589018247486601}
   - component: {fileID: 1412428761}
   - component: {fileID: 851759251924361369}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 20
+  health: 1
 --- !u!114 &1412428761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,13 +373,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword: {fileID: 377880695}
   player: {fileID: 0}
-  attackMinTime: 1.2
-  attackMaxTime: 3
-  attackPoint: {fileID: 5928142760064877026}
-  attackRange: 0.5
+  tpm: {fileID: 0}
+  attackMinTime: 2
+  attackMaxTime: 5
+  attackPoint: {fileID: 1869272163}
+  attackRange: 1.02
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!65 &851759251924361369
 BoxCollider:
   m_ObjectHideFlags: 0
