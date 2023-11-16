@@ -13,7 +13,6 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-    public EnemyController enemyController; 
 
     void Start()
     {
