@@ -32,15 +32,7 @@ public class EnemyAttack : MonoBehaviour
         anim.SetTrigger("Attack");
 
         //brackeys melee combat tutorial 
-        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-        
-        foreach(Collider player in hitPlayer)
-        {
-            Debug.Log("HIT!");
-            tpm.TakeDamage(1);
-
-        }
-
+        EnemySwordFunct();
 
         float attackTime = Random.Range(attackMinTime, attackMaxTime);
         Invoke("SwordAttack", attackTime);
@@ -49,5 +41,17 @@ public class EnemyAttack : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange); 
+    }
+
+    void EnemySwordFunct()
+    {
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider player in hitPlayer)
+        {
+            Debug.Log("HIT!");
+            tpm.TakeDamage(1);
+
+        }
     }
 }
