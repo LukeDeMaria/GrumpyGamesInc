@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0.931, y: 0.63, z: 0}
   m_LocalScale: {x: 0.25, y: 2.03, z: 0.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5928142760064877026}
   m_Father: {fileID: 1967982272}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,7 +150,6 @@ Transform:
   m_Children:
   - {fileID: 3995706709696708052}
   - {fileID: 377880696}
-  - {fileID: 5928142760064877026}
   m_Father: {fileID: 1521589018247486606}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 20
+  health: 1
 --- !u!114 &1412428761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword: {fileID: 377880695}
   player: {fileID: 0}
+  tpm: {fileID: 0}
   attackMinTime: 1.2
   attackMaxTime: 3
   attackPoint: {fileID: 5928142760064877026}
@@ -384,12 +386,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576146821952757510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.153, y: 0.95, z: 10.672}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -20.335999, y: 0.15763542, z: 42.688}
+  m_LocalScale: {x: 4, y: 0.4926108, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1967982272}
-  m_RootOrder: 2
+  m_Father: {fileID: 377880696}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2661736931927573069
 GameObject:
