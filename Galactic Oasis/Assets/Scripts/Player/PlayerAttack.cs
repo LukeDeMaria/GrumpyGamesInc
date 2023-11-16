@@ -13,6 +13,8 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public EnemyController enemyController; 
+
     void Start()
     {
         
@@ -61,6 +63,7 @@ public class PlayerAttack : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<EnemyController>().TakeDamage(1);
         }
 
     }

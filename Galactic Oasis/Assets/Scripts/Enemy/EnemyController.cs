@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10;
 
+    public int health = 1;
+
     Transform target;
     NavMeshAgent agent; 
 
@@ -28,11 +30,21 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
         }
+
+        if(health <= 0)
+        {
+            Destroy(gameObject); 
+        }
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius); 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 }
