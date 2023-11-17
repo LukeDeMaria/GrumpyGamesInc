@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-
+    
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
         Animator anim = playerSword.GetComponent<Animator>();
         anim.SetTrigger("PlayerAttack");
 
-        SwordFunct();
+        SwordFunct(); 
     }
 
     IEnumerator ResetAttackCooldown()
