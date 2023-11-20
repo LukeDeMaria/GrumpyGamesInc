@@ -8,6 +8,7 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public GameObject enemySword;
+    public GameObject astronautRig;
     public Transform cam;
 
     public int maxHealth = 8;
@@ -31,6 +32,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public float dashHeight;
     public float dashSpeed;
     public float dashTime;
+    public float horizontalInput;
+    public float verticalInput;
     Scene currentScene;
     
 
@@ -58,13 +61,22 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            WalkAnimation();
+        }
+
+        
+        
+        
 
         if (direction.magnitude >= 0.1f)
         {
@@ -121,6 +133,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
             SceneManager.LoadScene(currentScene.name);
         }
+    }
+
+    public void WalkAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.SetTrigger("IsWalking");
+
     }
 
 
