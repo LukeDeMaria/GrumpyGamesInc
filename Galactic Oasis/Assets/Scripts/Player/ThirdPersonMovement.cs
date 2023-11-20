@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -30,6 +31,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public float dashHeight;
     public float dashSpeed;
     public float dashTime;
+    Scene currentScene;
+    
 
     Vector3 moveDir = new Vector3();
 
@@ -38,6 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        currentScene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -112,6 +116,11 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
 
 
