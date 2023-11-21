@@ -7,8 +7,6 @@ public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10;
 
-    public GameObject enemyHead; 
-
     public int health = 1;
 
     Transform target;
@@ -35,8 +33,6 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
-            Animator anim = enemyHead.GetComponent<Animator>();
-            anim.SetTrigger("Dead");
             Destroy(gameObject); 
         }
     }
