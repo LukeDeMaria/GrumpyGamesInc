@@ -73,6 +73,10 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             WalkAnimation();
         }
+        else
+        {
+            StopWalkAnimation();
+        }
 
         
         
@@ -139,7 +143,12 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Animator anim = astronautRig.GetComponent<Animator>();
         anim.SetTrigger("IsWalking");
+    }
 
+    public void StopWalkAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.ResetTrigger("IsWalking");
     }
 
 
