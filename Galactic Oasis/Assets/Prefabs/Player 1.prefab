@@ -31,6 +31,37 @@ Transform:
   m_Father: {fileID: 9012915200569060392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4747702400092090005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975003258204665432}
+  m_Layer: 7
+  m_Name: KillzoneCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975003258204665432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747702400092090005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.034, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9012915200617251547}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9012915199225840303
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +123,7 @@ Transform:
   m_Children:
   - {fileID: 9012915200569060392}
   m_Father: {fileID: 9012915200617251547}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9012915199693898198
 GameObject:
@@ -562,6 +593,7 @@ Transform:
   - {fileID: 9012915200590462305}
   - {fileID: 9012915199693898193}
   - {fileID: 9012915199225840302}
+  - {fileID: 975003258204665432}
   - {fileID: 9012915199392029511}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -611,7 +643,13 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  killzoneCheck: {fileID: 975003258204665432}
+  killzoneDistance: 0.4
+  killzoneMask:
+    serializedVersion: 2
+    m_Bits: 256
   isGrounded: 0
+  touchingKillzone: 0
   hasDashed: 0
   jumpHeight: 7
   dashHeight: 3

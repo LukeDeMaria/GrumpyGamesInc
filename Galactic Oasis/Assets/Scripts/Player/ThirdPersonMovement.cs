@@ -25,7 +25,12 @@ public class ThirdPersonMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    public Transform killzoneCheck;
+    public float killzoneDistance = 0.4f;
+    public LayerMask killzoneMask;
+
     public bool isGrounded;
+    public bool touchingKillzone;
     public bool hasDashed = false;
     
     public float jumpHeight = 3f;
@@ -51,10 +56,15 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
         if (isGrounded == true)
         {
             hasDashed = false;
             StopJumpAnimation();
+        }
+        if (touchingKillzone == true)
+        {
+            TakeDamage(currentHealth);
         }
 
         if (isGrounded && velocity.y < 0)
