@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 3f41faf0d877d544e96c8d2f789af442, type: 2}
+--- !u!1 &63758926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6537444602876231956, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
+  m_PrefabInstance: {fileID: 1358152625}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &88636648
 GameObject:
   m_ObjectHideFlags: 0
@@ -4757,6 +4762,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 144377197}
+    - target: {fileID: 1521589018247486601, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
+      propertyPath: enemyHead
+      value: 
+      objectReference: {fileID: 63758926}
     - target: {fileID: 1521589018247486604, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -8418,15 +8427,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13505942
+      value: 0.1350594
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 8.719026e-16
+      value: -0.00000001476463
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.7869098e-17
+      value: 0.0000000020125421
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189927598400, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_Follow

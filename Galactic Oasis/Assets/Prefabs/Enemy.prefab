@@ -139,7 +139,7 @@ MonoBehaviour:
   attackMinTime: 1.5
   attackMaxTime: 5.5
   attackPoint: {fileID: 5928142760064877026}
-  attackRange: 0.5
+  attackRange: 0.71
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 20
+  enemyHead: {fileID: 6537444602876231956}
   health: 1
 --- !u!114 &1412428761
 MonoBehaviour:
@@ -325,7 +326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576146821952757510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.15763542, z: 0.049}
+  m_LocalPosition: {x: 0.17, y: 0.258, z: 0.049}
   m_LocalScale: {x: 4, y: 0.4926108, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -895,3 +896,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1ce2a4c5a8a7f7845b59b68653317572, type: 3}
   m_PrefabInstance: {fileID: 6230944400536943685}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6537444602876231956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1ce2a4c5a8a7f7845b59b68653317572, type: 3}
+  m_PrefabInstance: {fileID: 6230944400536943685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1745752401
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6537444602876231956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bd85b1377fb65e4cb341bcf310c9d3c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
