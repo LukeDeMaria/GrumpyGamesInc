@@ -598,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 9012915200617251525}
   enemySword: {fileID: 0}
+  astronautRig: {fileID: 2197135249378050512}
   cam: {fileID: 0}
   maxHealth: 8
   currentHealth: 0
@@ -613,9 +614,11 @@ MonoBehaviour:
   isGrounded: 0
   hasDashed: 0
   jumpHeight: 7
-  dashHeight: 4
+  dashHeight: 3
   dashSpeed: 10
   dashTime: 0.5
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!1001 &1350133275987164289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,7 +711,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 4b67c658d6415c44496fe0ea971bb7d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
