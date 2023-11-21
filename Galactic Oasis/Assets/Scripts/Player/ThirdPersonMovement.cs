@@ -54,6 +54,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (isGrounded == true)
         {
             hasDashed = false;
+            StopJumpAnimation();
         }
 
         if (isGrounded && velocity.y < 0)
@@ -69,7 +70,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && isGrounded == true)
         {
             WalkAnimation();
         }
@@ -95,6 +96,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            JumpAnimation();
 
         }
 
@@ -151,6 +153,20 @@ public class ThirdPersonMovement : MonoBehaviour
         Animator anim = astronautRig.GetComponent<Animator>();
         anim.ResetTrigger("IsWalking");
     }
+
+    public void JumpAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.SetTrigger("IsJumping");
+    }
+
+    public void StopJumpAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.ResetTrigger("IsJumping");
+    }
+
+
 
 
 }
