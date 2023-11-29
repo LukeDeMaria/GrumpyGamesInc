@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tower_Laser_Funct : MonoBehaviour
 {
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class Tower_Laser_Funct : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.back * speed * Time.deltaTime);
     }
 }
