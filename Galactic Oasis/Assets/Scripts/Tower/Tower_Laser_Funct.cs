@@ -5,6 +5,12 @@ using UnityEngine;
 public class Tower_Laser_Funct : MonoBehaviour
 {
     public float speed;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask playerLayer;
+    public ThirdPersonMovement tpm;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +21,18 @@ public class Tower_Laser_Funct : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        
+        foreach (Collider player in hitPlayer)
+        { 
+            HitAndDestroy();
+        }
+
+    }
+
+    void HitAndDestroy()
+    {
+        tpm.TakeDamage(1);
+        Destroy(gameObject); 
     }
 }
