@@ -8,13 +8,13 @@ public class Tower_Laser_Funct : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
-    public ThirdPersonMovement tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>;
+    private ThirdPersonMovement tpm;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
     }
 
     // Update is called once per frame
