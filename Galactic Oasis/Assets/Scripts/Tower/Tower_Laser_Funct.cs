@@ -15,6 +15,7 @@ public class Tower_Laser_Funct : MonoBehaviour
     void Start()
     {
         tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame

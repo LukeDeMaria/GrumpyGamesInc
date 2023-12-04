@@ -6,8 +6,8 @@ public class TowerEye : MonoBehaviour
 {
     public GameObject laserPrefab; 
 
-    public float shootMinTime = 1.5f;
-    public float shootMaxTime = 2.5f;
+    public float shootMinTime = 3.5f;
+    public float shootMaxTime = 5.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class TowerEye : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(laserPrefab, transform.position, laserPrefab.transform.rotation);
+        Instantiate(laserPrefab, transform.position, transform.rotation);
         float nextShotTime = Random.Range(shootMinTime, shootMaxTime);
         Invoke("Shoot", nextShotTime);
     }
