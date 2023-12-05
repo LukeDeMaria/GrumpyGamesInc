@@ -9,6 +9,7 @@ public class Tower_Laser_Funct : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
     private ThirdPersonMovement tpm;
+    public int damage = 2;
 
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class Tower_Laser_Funct : MonoBehaviour
 
     void HitAndDestroy()
     {
-        tpm.TakeDamage(1);
+        tpm.TakeDamage(damage);
         Destroy(gameObject); 
     }
 }
