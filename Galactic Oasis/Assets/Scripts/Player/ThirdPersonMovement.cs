@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public GameObject enemySword;
+    public GameObject astronautRig;
     public Transform cam;
 
     public int maxHealth = 8;
@@ -23,13 +25,22 @@ public class ThirdPersonMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    public Transform killzoneCheck;
+    public float killzoneDistance = 0.4f;
+    public LayerMask killzoneMask;
+
     public bool isGrounded;
+    public bool touchingKillzone;
     public bool hasDashed = false;
     
     public float jumpHeight = 3f;
     public float dashHeight;
     public float dashSpeed;
     public float dashTime;
+    public float horizontalInput;
+    public float verticalInput;
+    Scene currentScene;
+    
 
     Vector3 moveDir = new Vector3();
 
@@ -38,15 +49,22 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        currentScene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
         if (isGrounded == true)
         {
             hasDashed = false;
+            StopJumpAnimation();
+        }
+        if (touchingKillzone == true)
+        {
+            TakeDamage(currentHealth);
         }
 
         if (isGrounded && velocity.y < 0)
@@ -54,13 +72,26 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && isGrounded == true)
+        {
+            WalkAnimation();
+        }
+        else
+        {
+            StopWalkAnimation();
+        }
+
+        
+        
+        
 
         if (direction.magnitude >= 0.1f)
         {
@@ -74,7 +105,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            JumpAnimation();
+
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && hasDashed == false)
@@ -112,7 +145,38 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+
+            SceneManager.LoadScene(currentScene.name);
+        }
     }
+
+    public void WalkAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.SetTrigger("IsWalking");
+    }
+
+    public void StopWalkAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.ResetTrigger("IsWalking");
+    }
+
+    public void JumpAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.SetTrigger("IsJumping");
+    }
+
+    public void StopJumpAnimation()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.ResetTrigger("IsJumping");
+    }
+
+
 
 
 }
