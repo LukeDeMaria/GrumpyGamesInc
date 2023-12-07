@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2605499644388365999}
   - component: {fileID: 6712691943726775071}
   - component: {fileID: 899728993360874642}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocketPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +90,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68a5146a782b614b9949eef91eef37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCheck: {fileID: 0}
+  playerDistance: 0.4
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  touchingPlayer: 0
 --- !u!54 &2605499644388365999
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -104,7 +110,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!33 &6712691943726775071
 MeshFilter:
@@ -125,6 +131,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7736077865237654953, guid: ab00480dd5d512143a843025e3644ca7, type: 3}

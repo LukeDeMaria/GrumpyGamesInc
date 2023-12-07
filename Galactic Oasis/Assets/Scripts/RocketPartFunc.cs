@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RocketPartFunc : MonoBehaviour
 {
+    public Transform playerCheck;
+    public float playerDistance = 0.4f;
+    public LayerMask playerMask;
+
+    public bool touchingPlayer;
 
     private BarrierDestroy barrierDestroy;
 
@@ -14,12 +19,26 @@ public class RocketPartFunc : MonoBehaviour
 
     void Update()
     {
-        
+        touchingPlayer = Physics.CheckSphere(playerCheck.position, playerDistance, playerMask);
+        if (touchingPlayer == true)
+        {
+            barrierDestroy.UpdateParts();
+            Destroy(gameObject);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Collect()
     {
         barrierDestroy.UpdateParts();
         Destroy(gameObject);
     }
+
+    /*void OnCollisionEnter(Collision collision)
+    {
+        if (touchingPlayer == true)
+        {
+            barrierDestroy.UpdateParts();
+            Destroy(gameObject);
+        }
+    }*/
 }
