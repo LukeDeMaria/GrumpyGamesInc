@@ -39,6 +39,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float dashTime;
     public float horizontalInput;
     public float verticalInput;
+    public BarrierDestroy barrierDestroy;
     Scene currentScene;
     
 
@@ -50,6 +51,7 @@ public class ThirdPersonMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
+        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
     }
 
     // Update is called once per frame
@@ -122,12 +124,11 @@ public class ThirdPersonMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
     }
-/*
-    void OnCollisionEnter(Collision collision)
+
+    /*void OnCollisionEnter(Collision collision)
     {
         
-    }
-*/
+    }*/
 
     IEnumerator Dash()
     {
