@@ -29,7 +29,7 @@ public class RightArmAttack : MonoBehaviour
 
     public void RandomizeNextAttack()
     {
-        int nextAttack = Random.Range(1, 2);
+        int nextAttack = Random.Range(1, 3);
         Attack(nextAttack);
     }
 
@@ -39,6 +39,18 @@ public class RightArmAttack : MonoBehaviour
         if(attackToDo == 1)
         {
             anim.SetTrigger("Swing");
+            AttackFunct();
+
+            float attackTime = Random.Range(attackMinTime, attackMaxTime);
+            Invoke("RandomizeNextAttack", attackTime);
+        } 
+        else if(attackToDo == 2)
+        {
+            anim.SetTrigger("Jab");
+            AttackFunct();
+
+            float attackTime = Random.Range(attackMinTime, attackMaxTime);
+            Invoke("RandomizeNextAttack", attackTime);
         }
     }
 
