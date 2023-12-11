@@ -7,8 +7,8 @@ public class LeftArmAttack : MonoBehaviour
     public GameObject leftArm;
     public GameObject player;
     public ThirdPersonMovement tpm;
-    public float attackMinTime = 4.5f;
-    public float attackMaxTime = 8.5f;
+    public float attackMinTime = 6.5f;
+    public float attackMaxTime = 12.5f;
     public int damage = 1;
 
     public Transform attackPoint;
@@ -38,7 +38,7 @@ public class LeftArmAttack : MonoBehaviour
         Animator anim = leftArm.GetComponent<Animator>();
         if (attackToDo == 1)
         {
-            anim.SetTrigger("Swing");
+            anim.SetTrigger("Jab");
             AttackFunct();
 
             float attackTime = Random.Range(attackMinTime, attackMaxTime);
