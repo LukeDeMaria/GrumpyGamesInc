@@ -10,13 +10,14 @@ public class Tower_Laser_Funct : MonoBehaviour
     public LayerMask playerLayer;
     private ThirdPersonMovement tpm;
     public int damage = 2;
+    public float secondsTillDestroy = 2.2f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
-        Destroy(gameObject, 3);
+        Destroy(gameObject, secondsTillDestroy);
     }
 
     // Update is called once per frame
