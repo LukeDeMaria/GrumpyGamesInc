@@ -9,6 +9,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public GameObject enemySword;
     public GameObject astronautRig;
+    public AudioSource audioSource;
+    public AudioClip deathSound;
     public Transform cam;
 
     public int maxHealth = 8;
@@ -39,6 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float dashTime;
     public float horizontalInput;
     public float verticalInput;
+    public BarrierDestroy barrierDestroy;
     Scene currentScene;
     
 
@@ -50,6 +53,8 @@ public class ThirdPersonMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
+        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -122,12 +127,11 @@ public class ThirdPersonMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
     }
-/*
-    void OnCollisionEnter(Collision collision)
+
+    /*void OnCollisionEnter(Collision collision)
     {
         
-    }
-*/
+    }*/
 
     IEnumerator Dash()
     {
@@ -144,10 +148,11 @@ public class ThirdPersonMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        audioSource.PlayOneShot(deathSound, 1);
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
-
+            
             SceneManager.LoadScene(currentScene.name);
         }
     }

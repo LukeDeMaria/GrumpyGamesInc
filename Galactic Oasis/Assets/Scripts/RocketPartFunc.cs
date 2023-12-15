@@ -5,7 +5,7 @@ using UnityEngine;
 public class RocketPartFunc : MonoBehaviour
 {
 
-    private BarrierDestroy barrierDestroy;
+    public BarrierDestroy barrierDestroy;
 
     void Start()
     {
@@ -14,12 +14,21 @@ public class RocketPartFunc : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void Collect()
     {
         barrierDestroy.UpdateParts();
         Destroy(gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Touched Rocket Part");
+            Collect();
+        }
     }
 }
