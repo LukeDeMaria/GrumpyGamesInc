@@ -31,9 +31,17 @@ public class ThirdPersonMovement : MonoBehaviour
     public float killzoneDistance = 0.4f;
     public LayerMask killzoneMask;
 
+    public Transform hazardCheck;
+    public float hazardDistance = 0.4f;
+    public LayerMask hazardMask;
+
     public bool isGrounded;
     public bool touchingKillzone;
+    public bool touchingHazard;
     public bool hasDashed = false;
+
+    public float iFrames = 1.0f;
+    public float damageCooldown = 0;
     
     public float jumpHeight = 3f;
     public float dashHeight;
@@ -60,8 +68,13 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (damageCooldown > 0)
+        {
+            damageCooldown -= Time.deltaTime;
+        }
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
+        touchingHazard = Physics.CheckSphere(hazardCheck.position, hazardDistance, hazardMask);
         if (isGrounded == true)
         {
             hasDashed = false;
@@ -70,6 +83,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingKillzone == true)
         {
             TakeDamage(currentHealth);
+        }
+        if (touchingHazard == true)
+        {
+            TakeDamage(2);
         }
 
         if (isGrounded && velocity.y < 0)
@@ -147,14 +164,18 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        audioSource.PlayOneShot(deathSound, 1);
-        healthBar.SetHealth(currentHealth);
+        if (damageCooldown <= 0)
+        {
+            currentHealth -= damage;
+            audioSource.PlayOneShot(deathSound, 1);
+            healthBar.SetHealth(currentHealth);
+        }
         if (currentHealth <= 0)
         {
             
             SceneManager.LoadScene(currentScene.name);
         }
+        damageCooldown = iFrames;
     }
 
     public void WalkAnimation()
