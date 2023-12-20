@@ -35,9 +35,14 @@ public class ThirdPersonMovement : MonoBehaviour
     public float hazardDistance = 0.4f;
     public LayerMask hazardMask;
 
+    public Transform mudCheck;
+    public float mudDistance = 0.4f;
+    public LayerMask mudMask;
+
     public bool isGrounded;
     public bool touchingKillzone;
     public bool touchingHazard;
+    public bool touchingMud;
     public bool hasDashed = false;
 
     public float iFrames = 1.0f;
@@ -75,6 +80,7 @@ public class ThirdPersonMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(hazardCheck.position, hazardDistance, hazardMask);
+        touchingMud = Physics.CheckSphere(mudCheck.position, mudDistance, mudMask);
         if (isGrounded == true)
         {
             hasDashed = false;
@@ -87,6 +93,14 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingHazard == true)
         {
             TakeDamage(2);
+        }
+        if (touchingMud == true)
+        {
+            speed = 5;
+        }
+        else
+        {
+            speed = 13;
         }
 
         if (isGrounded && velocity.y < 0)
