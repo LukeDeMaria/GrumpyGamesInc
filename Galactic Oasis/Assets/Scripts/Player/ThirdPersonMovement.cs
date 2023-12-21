@@ -43,6 +43,17 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
+
+    public bool touchingRocketPart;
+    public Transform rocketPartCheck;
+    public float rocketPartDistance = 1.5f;
+    public LayerMask rocketMask;
+    public RocketPartFunc rpf;
+
+    public int rocketPartsHad = 0;
+    public int rocketPartsNeeded = 5;
+
+
     public bool hasDashed = false;
 
     public float iFrames = 1.0f;
@@ -83,6 +94,12 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(hazardCheck.position, hazardDistance, hazardMask);
         touchingMud = Physics.CheckSphere(mudCheck.position, mudDistance, mudMask);
+        Collider[] collectRocketParts =  Physics.OverlapSphere(rocketPartCheck.position, rocketPartDistance, rocketMask);
+        foreach(Collider rocketPart in collectRocketParts)
+        {
+            Destroy(rocketPart);
+            CollectRocketPart();
+        }
         if (isGrounded == true)
         {
             hasDashed = false;
@@ -161,10 +178,19 @@ public class ThirdPersonMovement : MonoBehaviour
 
     }
 
-    /*void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
-        
-    }*/
+        if(collision.gameObject.tag == "RocketPart")
+        {
+            Destroy(collision.gameObject);
+
+        }
+    }
+
+    public void CollectRocketPart()
+    {
+        rocketPartsHad++;
+    }
 
     IEnumerator Dash()
     {
