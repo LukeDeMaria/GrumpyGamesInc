@@ -68,6 +68,8 @@ public class ThirdPersonMovement : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
