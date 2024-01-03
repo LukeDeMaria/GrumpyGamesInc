@@ -17,7 +17,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    public float speed;
+    public float speed = 13.0f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 velocity;
@@ -120,16 +120,17 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (touchingMud == true)
         {
-            speed = 5;
-        }
-        if (touchingMushroom == true)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            speed = 5.0f;
         }
         else
         {
             speed = 13;
         }
+        if (touchingMushroom == true)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        
 
         if (isGrounded && velocity.y < 0)
         {
