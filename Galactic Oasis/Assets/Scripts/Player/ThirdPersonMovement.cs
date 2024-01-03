@@ -97,13 +97,14 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, checkDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
         touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
+        touchingMushroom = Physics.CheckSphere(mudCheck.position, checkDistance, mushroomMask);
         //Collider[] collectRocketParts =  Physics.OverlapSphere(rocketPartCheck.position, rocketPartDistance, rocketMask);
-       /* foreach(Collider rocketPart in collectRocketParts)
-        {
-            Destroy(rocketPart);
-            CollectRocketPart();
-        }
-       */
+        /* foreach(Collider rocketPart in collectRocketParts)
+         {
+             Destroy(rocketPart);
+             CollectRocketPart();
+         }
+        */
         if (isGrounded == true)
         {
             hasDashed = false;
@@ -120,6 +121,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingMud == true)
         {
             speed = 5;
+        }
+        if (touchingMushroom == true)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
         else
         {
