@@ -23,26 +23,27 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 velocity;
     public float gravity = -9.81f;
 
+    public float checkDistance = 0.4f;
+
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
     public Transform killzoneCheck;
-    public float killzoneDistance = 0.4f;
     public LayerMask killzoneMask;
 
     public Transform hazardCheck;
-    public float hazardDistance = 0.4f;
     public LayerMask hazardMask;
 
     public Transform mudCheck;
-    public float mudDistance = 0.4f;
     public LayerMask mudMask;
+
+    public LayerMask mushroomMask;
 
     public bool isGrounded;
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
+    public bool touchingMushroom;
 
     /*
     public bool touchingRocketPart;
@@ -92,17 +93,18 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             damageCooldown -= Time.deltaTime;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, killzoneDistance, killzoneMask);
-        touchingHazard = Physics.CheckSphere(hazardCheck.position, hazardDistance, hazardMask);
-        touchingMud = Physics.CheckSphere(mudCheck.position, mudDistance, mudMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask);
+        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, checkDistance, killzoneMask);
+        touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
+        touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
+        touchingMushroom = Physics.CheckSphere(mudCheck.position, checkDistance, mushroomMask);
         //Collider[] collectRocketParts =  Physics.OverlapSphere(rocketPartCheck.position, rocketPartDistance, rocketMask);
-       /* foreach(Collider rocketPart in collectRocketParts)
-        {
-            Destroy(rocketPart);
-            CollectRocketPart();
-        }
-       */
+        /* foreach(Collider rocketPart in collectRocketParts)
+         {
+             Destroy(rocketPart);
+             CollectRocketPart();
+         }
+        */
         if (isGrounded == true)
         {
             hasDashed = false;
@@ -119,6 +121,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingMud == true)
         {
             speed = 5;
+        }
+        if (touchingMushroom == true)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
         else
         {
