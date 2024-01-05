@@ -17,6 +17,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    public DashBar dashBar;
+
     public float speed;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
