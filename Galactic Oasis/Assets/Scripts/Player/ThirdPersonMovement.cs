@@ -124,13 +124,14 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             speed = 5;
         }
-        if (touchingMushroom == true)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+
         else
         {
             speed = 13;
+        }
+        if (touchingMushroom == true)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
         if (isGrounded && velocity.y < 0)
