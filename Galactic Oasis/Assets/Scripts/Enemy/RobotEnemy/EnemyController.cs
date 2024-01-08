@@ -8,7 +8,9 @@ public class EnemyController : MonoBehaviour
     public float lookRadius = 10;
 
     public int health = 1;
-    public float distance; 
+    public float distance;
+
+    public GameObject RocketPart;
 
     Transform target;
     NavMeshAgent agent; 
@@ -34,6 +36,10 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
+            if (gameObject.tag == "Miniboss")
+            {
+               Instantiate(RocketPart, transform.position, transform.rotation);
+            }
             Destroy(gameObject); 
         }
     }
