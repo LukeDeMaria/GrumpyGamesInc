@@ -119,7 +119,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (touchingMud == true)
         {
-            speed = 5;
+            speed = 3;
         }
         else
         {
