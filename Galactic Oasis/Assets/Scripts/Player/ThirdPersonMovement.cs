@@ -21,10 +21,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public DashBar dashBar;
 
     public float speed;
-    public float turnSmoothTime = 0.1f;
+    float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 velocity;
-    public float gravity = -9.81f;
+    float gravity = -9.81f;
 
     public float checkDistance = 0.4f;
 
