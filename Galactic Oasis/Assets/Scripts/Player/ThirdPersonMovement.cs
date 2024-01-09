@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -76,6 +77,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
+        Animator anim = astronautRig.GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
@@ -88,6 +90,7 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Animator anim = astronautRig.GetComponent<Animator>();
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
@@ -105,9 +108,13 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (isGrounded == true)
         {
+
             hasDashed = false;
+            dashBar.GetComponent<Slider>().value = 2;
+            anim.SetTrigger("IsOnGround");
             StopJumpAnimation();
         }
+        else anim.ResetTrigger("IsOnGround");
         if (touchingKillzone == true)
         {
             TakeDamage(currentHealth);
@@ -119,7 +126,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (touchingMud == true)
         {
-            speed = 5;
+            speed = 3;
         }
         else
         {
@@ -179,6 +186,7 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(dashHeight * -2f * gravity);
             StartCoroutine(Dash());
             hasDashed = true;
+            dashBar.GetComponent<Slider>().value = 0;
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -207,6 +215,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             yield return null;
         }
+        
     }
 
     public void TakeDamage(int damage)
@@ -248,6 +257,8 @@ public class ThirdPersonMovement : MonoBehaviour
         Animator anim = astronautRig.GetComponent<Animator>();
         anim.ResetTrigger("IsJumping");
     }
+
+
 
 
 
