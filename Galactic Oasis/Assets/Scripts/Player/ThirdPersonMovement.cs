@@ -14,10 +14,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public AudioClip deathSound;
     public Transform cam;
 
-    public int maxHealth = 8;
+    public int maxHealth;
     public int currentHealth;
-    public HealthBar healthBar;
 
+    public HealthBar healthBar;
     public DashBar dashBar;
 
     public float speed;
