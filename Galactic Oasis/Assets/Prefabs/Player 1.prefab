@@ -31,37 +31,6 @@ Transform:
   m_Father: {fileID: 9012915200569060392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3130314087697573166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8340222195631346858}
-  m_Layer: 7
-  m_Name: Checks
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8340222195631346858
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3130314087697573166}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9012915200617251547}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3492647530973437891
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +126,7 @@ Transform:
   - {fileID: 5677387681119142962}
   - {fileID: 1329883030528424818}
   m_Father: {fileID: 9012915200617251547}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6160726880562185570
 GameObject:
@@ -219,7 +188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9012915200617251547}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9012915199225840303
 GameObject:
@@ -282,7 +251,7 @@ Transform:
   m_Children:
   - {fileID: 9012915200569060392}
   m_Father: {fileID: 9012915200617251547}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9012915199693898198
 GameObject:
@@ -753,7 +722,6 @@ Transform:
   - {fileID: 9012915200421907691}
   - {fileID: 9012915200590462305}
   - {fileID: 9012915199693898193}
-  - {fileID: 8340222195631346858}
   - {fileID: 3538730245844257993}
   - {fileID: 1312577210727075724}
   - {fileID: 9012915199392029511}
@@ -801,7 +769,6 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   dashBar: {fileID: 0}
   speed: 13
-  turnSmoothTime: 0.1
   gravity: -48.8
   checkDistance: 0.4
   groundCheck: {fileID: 9012915199225840302}

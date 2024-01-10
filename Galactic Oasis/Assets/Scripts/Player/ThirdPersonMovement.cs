@@ -28,15 +28,19 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public float checkDistance = 0.4f;
 
+    [HideInInspector]
     public Transform groundCheck;
     public LayerMask groundMask;
 
+    [HideInInspector]
     public Transform killzoneCheck;
     public LayerMask killzoneMask;
 
+    [HideInInspector]
     public Transform hazardCheck;
     public LayerMask hazardMask;
 
+    [HideInInspector]
     public Transform mudCheck;
     public LayerMask mudMask;
 
@@ -60,6 +64,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool hasDashed = false;
 
     public float iFrames = 1.0f;
+
+    [HideInInspector]
     public float damageCooldown = 0;
     
     public float jumpHeight = 3f;
