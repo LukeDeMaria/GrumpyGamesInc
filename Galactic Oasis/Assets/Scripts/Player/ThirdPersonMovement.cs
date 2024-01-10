@@ -24,7 +24,7 @@ public class ThirdPersonMovement : MonoBehaviour
     float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     Vector3 velocity;
-    float gravity = -9.81f;
+    public float gravity = -9.81f;
 
     public float checkDistance = 0.4f;
 
