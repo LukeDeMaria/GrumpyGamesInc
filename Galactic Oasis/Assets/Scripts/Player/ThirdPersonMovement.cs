@@ -192,6 +192,8 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(dashHeight * -2f * gravity);
             StartCoroutine(Dash());
             hasDashed = true;
+            anim.SetTrigger("IsDashing");
+            StartDashAnim();
             dashBar.GetComponent<Slider>().value = 0;
         }
 
@@ -262,6 +264,12 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         Animator anim = astronautRig.GetComponent<Animator>();
         anim.ResetTrigger("IsJumping");
+    }
+
+    public void StartDashAnim()
+    {
+        Animator anim = astronautRig.GetComponent<Animator>();
+        anim.ResetTrigger("IsDashing");
     }
 
 
