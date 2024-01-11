@@ -10,6 +10,8 @@ public class BugAttack : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
+
+    public ThirdPersonMovement tpm;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +21,23 @@ public class BugAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        BugDamaging();
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void BugDamaging()
+    {
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider player in hitPlayer)
+        {
+            Debug.Log("HIT!");
+            tpm.TakeDamage(1);
+
+        }
     }
 }

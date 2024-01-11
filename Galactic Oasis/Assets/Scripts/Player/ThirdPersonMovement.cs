@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public GameObject enemySword;
+    //public GameObject enemySword;
     public GameObject astronautRig;
     public AudioSource audioSource;
     public AudioClip deathSound;
@@ -229,7 +229,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (damageCooldown <= 0)
         {
             currentHealth -= damage;
-            audioSource.PlayOneShot(deathSound, 1);
+           // audioSource.PlayOneShot(deathSound, 1);
             healthBar.SetHealth(currentHealth);
         }
         if (currentHealth <= 0)
