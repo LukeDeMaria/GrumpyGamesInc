@@ -13,6 +13,6 @@ public class UIFaceCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Transform.LookAt(target);
+     //  Transform.LookAt(target);
     }
 }
