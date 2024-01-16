@@ -141,7 +141,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (touchingMushroom == true)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = Mathf.Sqrt((jumpHeight *1.5f ) * -2f * gravity);
         }
 
         if (isGrounded && velocity.y < 0)
