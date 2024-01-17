@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health -= 1;
     }
 
 }
