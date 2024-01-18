@@ -6,24 +6,19 @@ public class BarrierDestroy : MonoBehaviour
 {
 
     public int rocketPartsNeeded = 5;
-    public int rocketPartsHad = 0;
 
+    public ThirdPersonMovement tpm;
 
     void Start()
     {
         
     }
-
+    
     void Update()
     {
-        if(rocketPartsHad >= rocketPartsNeeded)
+        if(tpm.rocketPartsHad >= rocketPartsNeeded)
         {
             Destroy(gameObject); 
         }
-    }
-
-   public void UpdateParts()
-    {
-        rocketPartsHad++; 
     }
 }
