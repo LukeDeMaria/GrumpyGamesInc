@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RocketPartFunc : MonoBehaviour
 {
-
+    /*
     public BarrierDestroy barrierDestroy;
 
     void Start()
@@ -31,4 +31,5 @@ public class RocketPartFunc : MonoBehaviour
             Collect();
         }
     }
+    */
 }
