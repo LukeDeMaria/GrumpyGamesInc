@@ -58,7 +58,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
     public int rocketPartsHad = 0;
-    public int rocketPartsNeeded = 5;
+   // public int rocketPartsNeeded = 5;
 
 
     public bool hasDashed = false;
