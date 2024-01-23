@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -19,6 +20,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public HealthBar healthBar;
     public DashBar dashBar;
+    TextMeshProUGUI rpText;
 
     public float speed;
     float turnSmoothTime = 0.1f;
@@ -89,8 +91,9 @@ public class ThirdPersonMovement : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
         audioSource = gameObject.GetComponent<AudioSource>();
-
+        rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
+        rpText.text = "0/" + barrierDestroy.rocketPartsNeeded.ToString();
     }
 
     // Update is called once per frame
@@ -110,6 +113,7 @@ public class ThirdPersonMovement : MonoBehaviour
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
+            rpText.text = rocketPartsHad.ToString() + "/" + barrierDestroy.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
         if (isGrounded == true)
@@ -208,7 +212,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if(collision.gameObject.tag == "RocketPart")
         {
             Destroy(collision.gameObject);
-
+            
         }
     }
 
