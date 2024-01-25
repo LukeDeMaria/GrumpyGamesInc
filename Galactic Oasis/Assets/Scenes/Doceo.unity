@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 35523527}
   - component: {fileID: 35523526}
   - component: {fileID: 35523525}
+  - component: {fileID: 35523529}
   m_Layer: 6
   m_Name: Dirt
   m_TagString: Untagged
@@ -620,7 +621,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d422d6191b3814c8e3f3fbec3cb690, type: 2}
+  - {fileID: 595481523}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -665,6 +666,19 @@ Transform:
   m_Father: {fileID: 993864126}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: -1.91, z: 0}
+--- !u!114 &35523529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35523524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96032df9e57d8949b61bcf7dbf42313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleFactor: 30
 --- !u!1 &37360143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48740673}
   m_LocalRotation: {x: 0, y: 0.82636374, z: 0, w: 0.5631367}
-  m_LocalPosition: {x: 160.4, y: 16.25, z: 6.8}
+  m_LocalPosition: {x: 160.4, y: 16.249, z: 6.8}
   m_LocalScale: {x: 46.613316, y: 1, z: 28.21473}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2011,7 +2025,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85404740}
   m_LocalRotation: {x: 0, y: 0.25218755, z: 0, w: 0.96767837}
-  m_LocalPosition: {x: -17.2, y: 16.5, z: -55.8}
+  m_LocalPosition: {x: -17.2, y: 16.49, z: -55.8}
   m_LocalScale: {x: 37.15228, y: 1, z: 45.72261}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12798,6 +12812,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1521589018247486606, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
   m_PrefabInstance: {fileID: 1724007447}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &595481523
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dirt (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _NORMALMAP
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: bdf56c392bb349049975b8eb649130dd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 8281e21fc03809444969f5464186e276, type: 3}
+        m_Scale: {x: 2.235731, y: 1.8469806}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: a5c7d9dffa6ee3340914420574c49091, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &599626357
 GameObject:
   m_ObjectHideFlags: 0
@@ -13795,7 +13888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658009774}
   m_LocalRotation: {x: 0, y: 0.116532035, z: 0, w: 0.993187}
-  m_LocalPosition: {x: 4.9, y: 16.5, z: -64.3}
+  m_LocalPosition: {x: 4.9, y: 16.49, z: -64.3}
   m_LocalScale: {x: 37.15228, y: 1, z: 45.72261}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30432,7 +30525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509116110}
   m_LocalRotation: {x: 0, y: 0.46290153, z: 0, w: 0.88640976}
-  m_LocalPosition: {x: 140.5, y: 16.25, z: 46.2}
+  m_LocalPosition: {x: 140.5, y: 16.249, z: 46.2}
   m_LocalScale: {x: 46.613316, y: 1, z: 28.21473}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31654,7 +31747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569575015}
   m_LocalRotation: {x: 0, y: 0.5675061, z: 0, w: 0.82336926}
-  m_LocalPosition: {x: 158.3, y: 16.25, z: 31.8}
+  m_LocalPosition: {x: 158.3, y: 13.64, z: 31.8}
   m_LocalScale: {x: 46.613316, y: 1, z: 28.21473}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37664,7 +37757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820045160}
   m_LocalRotation: {x: 0, y: 0.061928246, z: 0, w: 0.9980807}
-  m_LocalPosition: {x: -4.8, y: 9.05, z: -39.1}
+  m_LocalPosition: {x: -4.8, y: 9.049, z: -39.1}
   m_LocalScale: {x: 37.15227, y: 1, z: 34.078735}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45151,15 +45244,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1350594
+      value: 0.13505942
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001476463
+      value: 8.719026e-16
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000020125421
+      value: -1.7869098e-17
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189927598400, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_Follow
