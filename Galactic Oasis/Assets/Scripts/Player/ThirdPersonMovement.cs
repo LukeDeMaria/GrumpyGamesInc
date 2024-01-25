@@ -19,7 +19,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
-    public DashBar dashBar;
+    public GameObject dashBlue;
+    public GameObject dashGray;
     TextMeshProUGUI rpText;
 
     public float speed;
@@ -120,7 +121,9 @@ public class ThirdPersonMovement : MonoBehaviour
         {
 
             hasDashed = false;
-            dashBar.GetComponent<Slider>().value = 2;
+            dashBlue.SetActive(true);
+            dashGray.SetActive(false);
+
             anim.SetTrigger("IsOnGround");
             StopJumpAnimation();
         }
@@ -199,7 +202,8 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = true;
             anim.SetTrigger("IsDashing");
             StartDashAnim();
-            dashBar.GetComponent<Slider>().value = 0;
+            dashBlue.SetActive(false);
+            dashGray.SetActive(true);
         }
 
         velocity.y += gravity * Time.deltaTime;
