@@ -131,7 +131,8 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (touchingHazard == true)
         {
-            TakeDamage(2);
+            //TakeDamage(2);
+            StartCoroutine(waiter());
         }
 
         if (touchingMud == true)
@@ -276,6 +277,17 @@ public class ThirdPersonMovement : MonoBehaviour
         anim.ResetTrigger("IsDashing");
     }
 
+    IEnumerator waiter()
+    {
+        if(touchingHazard == true)
+        {
+            yield return new WaitForSeconds(3);
+            TakeDamage(1);
+            StartCoroutine(waiter());
+        }
+            
+        
+    }
 
 
 
