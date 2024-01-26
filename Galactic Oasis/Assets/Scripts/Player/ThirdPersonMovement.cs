@@ -49,11 +49,16 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public LayerMask mushroomMask;
 
+    public LayerMask poisonMask;
+
     public bool isGrounded;
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
     public bool touchingMushroom;
+    public bool touchingPoison;
+
+    public bool isPoisoned;
 
 
     public bool touchingRocketPart;
@@ -110,6 +115,7 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
         touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
         touchingMushroom = Physics.CheckSphere(mudCheck.position, checkDistance, mushroomMask);
+        touchingPoison = Physics.CheckSphere(mudCheck.position, checkDistance, poisonMask);
         Collider[] collectRocketParts = Physics.OverlapSphere(mudCheck.position, checkDistance, rocketMask);
         foreach (Collider rocketPart in collectRocketParts)
         {
@@ -123,6 +129,7 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = false;
             dashBlue.SetActive(true);
             dashGray.SetActive(false);
+            isPoisoned = false;
 
             anim.SetTrigger("IsOnGround");
             StopJumpAnimation();
@@ -134,8 +141,13 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (touchingHazard == true)
         {
-            //TakeDamage(2);
-            StartCoroutine(waiter());
+            TakeDamage(2);
+            
+        }
+        if (touchingPoison == true)
+        {
+            isPoisoned = true;
+            StartCoroutine(PoisonChipDamage());
         }
 
         if (touchingMud == true)
@@ -281,16 +293,14 @@ public class ThirdPersonMovement : MonoBehaviour
         anim.ResetTrigger("IsDashing");
     }
 
-    IEnumerator waiter()
+    IEnumerator PoisonChipDamage()
     {
-        if(touchingHazard == true)
+        yield return new WaitForSeconds(3);
+        TakeDamage(1);
+        if (isPoisoned)
         {
-            yield return new WaitForSeconds(3);
-            TakeDamage(1);
-            StartCoroutine(waiter());
+            StartCoroutine(PoisonChipDamage());
         }
-            
-        
     }
 
 
