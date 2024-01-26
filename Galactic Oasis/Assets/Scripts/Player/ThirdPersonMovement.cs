@@ -34,6 +34,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [HideInInspector]
     public Transform groundCheck;
     public LayerMask groundMask;
+    public LayerMask groundMask2;
 
     [HideInInspector]
     public Transform killzoneCheck;
@@ -52,6 +53,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask poisonMask;
 
     public bool isGrounded;
+    public bool isGrounded2;
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
@@ -111,6 +113,7 @@ public class ThirdPersonMovement : MonoBehaviour
             damageCooldown -= Time.deltaTime;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask);
+        isGrounded2 = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask2);
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, checkDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
         touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
@@ -123,13 +126,16 @@ public class ThirdPersonMovement : MonoBehaviour
             rpText.text = rocketPartsHad.ToString() + "/" + barrierDestroy.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
-        if (isGrounded == true)
+        if (isGrounded == true || isGrounded2 == true)
         {
 
             hasDashed = false;
             dashBlue.SetActive(true);
             dashGray.SetActive(false);
-            isPoisoned = false;
+            if(isGrounded == true)
+            {
+                isPoisoned = false;
+            }
 
             anim.SetTrigger("IsOnGround");
             StopJumpAnimation();
@@ -200,7 +206,7 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime); 
         }
 
-       if(Input.GetButtonDown("Jump") && isGrounded)
+       if((Input.GetButtonDown("Jump") && isGrounded) || (Input.GetButtonDown("Jump") && isGrounded2))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             JumpAnimation();
