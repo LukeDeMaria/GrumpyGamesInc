@@ -7,7 +7,7 @@ using TMPro;
 
 
 public class ThirdPersonMovement : MonoBehaviour
-{
+{ 
     public CharacterController controller;
     //public GameObject enemySword;
     public GameObject astronautRig;
@@ -61,6 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool touchingPoison;
 
     public bool isPoisoned;
+    public bool takingChipDamage;
 
 
     public bool touchingRocketPart;
@@ -135,6 +136,12 @@ public class ThirdPersonMovement : MonoBehaviour
             if(isGrounded == true)
             {
                 isPoisoned = false;
+                takingChipDamage = false;
+            }
+            if(isGrounded2 == true)
+            {
+                isPoisoned = true; 
+                takingChipDamage = true;
             }
 
             anim.SetTrigger("IsOnGround");
@@ -153,7 +160,12 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingPoison == true)
         {
             isPoisoned = true;
-            StartCoroutine(PoisonChipDamage());
+            if(takingChipDamage == false)
+            {
+                StartCoroutine(PoisonChipDamage());
+                takingChipDamage=true;
+            }
+            
         }
 
         if (touchingMud == true)
@@ -170,7 +182,7 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt((jumpHeight *1.5f ) * -2f * gravity);
         }
 
-        if (isGrounded && velocity.y < 0)
+        if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
         {
             velocity.y = -2f;
         }
@@ -183,7 +195,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && isGrounded == true)
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && (isGrounded == true || isGrounded2 == true))
         {
             WalkAnimation();
         }
@@ -301,16 +313,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     IEnumerator PoisonChipDamage()
     {
+        takingChipDamage = true;
         yield return new WaitForSeconds(3);
+        Debug.Log("Poison");
         TakeDamage(1);
+        
         if (isPoisoned)
-        {
             StartCoroutine(PoisonChipDamage());
         }
     }
 
-
-
-
-
-}
