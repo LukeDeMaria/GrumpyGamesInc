@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RocketPartFunc : MonoBehaviour
 {
-    /*
+
     public BarrierDestroy barrierDestroy;
 
     void Start()
@@ -16,13 +16,14 @@ public class RocketPartFunc : MonoBehaviour
     {
 
     }
-
+    /*
     public void Collect()
     {
         barrierDestroy.UpdateParts();
         Destroy(gameObject);
     }
-
+    */
+    /*
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
