@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
+    public GameObject RocketPart;
+
     Transform target;
     NavMeshAgent agent; 
 
@@ -37,6 +39,10 @@ public class EnemyController : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            if (gameObject.tag == "Miniboss")
+            {
+                Instantiate(RocketPart, transform.position, transform.rotation);
+            }
             Destroy(gameObject); 
         }
     }
