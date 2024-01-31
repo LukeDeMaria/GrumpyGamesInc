@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gear : MonoBehaviour
+public class Spin : MonoBehaviour
 {
     public float spinSpeed;
     // Start is called before the first frame update
