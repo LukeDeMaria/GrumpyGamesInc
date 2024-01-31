@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
 
     public GameObject RocketPart;
 
+    public float iFrames = 0.5f;
+    public float damageCooldown = 0;
+
     Transform target;
     NavMeshAgent agent; 
 
@@ -29,6 +32,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (damageCooldown > 0)
+        {
+            damageCooldown -= Time.deltaTime;
+        }
         float distance = Vector3.Distance(target.position, transform.position);
 
 
@@ -55,8 +62,12 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= 1;
-        healthBar.SetHealth(currentHealth);
+        if (damageCooldown <= 0)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
+        damageCooldown = iFrames;
     }
 
 }
