@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4744816654825049934}
   - component: {fileID: 4744816654825049935}
   - component: {fileID: 4744816654825049932}
-  - component: {fileID: 149327127466776841}
+  - component: {fileID: 4744816654825049933}
   m_Layer: 9
   m_Name: TowerBossFinal
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295f4b2086d3c02408df9dec96231cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &149327127466776841
+--- !u!114 &4744816654825049933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,16 +122,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4744816654825049931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ef567e21a990249b138a7ef6e4386f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5942237e40e7cd2478514f9d6a939176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
-  healthBar: {fileID: 0}
-  maxHealth: 1
-  currentHealth: 1
-  RocketPart: {fileID: 0}
-  iFrames: 0.5
-  damageCooldown: 0
+  lookRadius: 0
+  health: 1
 --- !u!1001 &4744816654138170802
 PrefabInstance:
   m_ObjectHideFlags: 0
