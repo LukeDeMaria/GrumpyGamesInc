@@ -15,7 +15,8 @@ public class BugAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
+
     }
 
     // Update is called once per frame
