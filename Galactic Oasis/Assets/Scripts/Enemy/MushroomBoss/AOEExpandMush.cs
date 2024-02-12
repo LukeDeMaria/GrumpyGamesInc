@@ -5,7 +5,7 @@ using UnityEngine;
 public class AOEExpandMush : MonoBehaviour
 {
     public Vector3 expandRate = new Vector3 (1, 1, 1);
-    public float expandTime = 1.0f;
+    public float expandTime = 0.1f;
     public float secondsTillDestroy = 8.0f;
 
     // Start is called before the first frame update
