@@ -11,18 +11,26 @@ public class AOEDamage : MonoBehaviour
     public ThirdPersonMovement tpm;
 
     public float expandTime = 0.1f;
+    public int damage = 1;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
+
         IncreaseAttackRange();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        foreach (Collider player in hitPlayer)
+        {
+            tpm.TakeDamage(1);
+        }
+
     }
 
     void OnDrawGizmosSelected()
@@ -32,7 +40,7 @@ public class AOEDamage : MonoBehaviour
 
     void IncreaseAttackRange()
     {
-        attackRange += 1;
+        attackRange += .51f;
         Invoke("IncreaseAttackRange", expandTime);
     }
 

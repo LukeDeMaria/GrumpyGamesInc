@@ -126,9 +126,9 @@ GameObject:
   - component: {fileID: 5131747207384883914}
   - component: {fileID: 5131747207384883913}
   - component: {fileID: 5131747207384883912}
-  - component: {fileID: 5131747207384883908}
   - component: {fileID: 5131747207384883909}
   - component: {fileID: 5131747207384883910}
+  - component: {fileID: 8028692715331877098}
   m_Layer: 0
   m_Name: MushroomProjectile
   m_TagString: Untagged
@@ -230,25 +230,6 @@ NavMeshAgent:
   m_BaseOffset: 0.51
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5131747207384883908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5131747207384883919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ef567e21a990249b138a7ef6e4386f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 310.37
-  healthBar: {fileID: 0}
-  maxHealth: 1
-  currentHealth: 1
-  RocketPart: {fileID: 0}
-  iFrames: 0.5
-  damageCooldown: 0
 --- !u!114 &5131747207384883909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,3 +263,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsTillDestroy: 8.8
+--- !u!114 &8028692715331877098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131747207384883919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3540e4ab982be0043b6a9c9a65543e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookRadius: 246.33
+  iFrames: 0.75
+  health: 1
+  distance: 0
+  damageCooldown: 0
+  RocketPart: {fileID: 0}

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e3bb39bdeb8c34b9ccd57fbe1bb590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: {fileID: 0}
+  sword: {fileID: 377880695}
   player: {fileID: 0}
   tpm: {fileID: 0}
   attackMinTime: 1.5
@@ -188,8 +188,8 @@ GameObject:
   - component: {fileID: 1521589018247486606}
   - component: {fileID: 1521589018247486603}
   - component: {fileID: 1521589018247486600}
-  - component: {fileID: 1521589018247486601}
   - component: {fileID: 851759251924361369}
+  - component: {fileID: 697046316625473556}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -253,22 +253,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1521589018247486601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521589018247486604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ef567e21a990249b138a7ef6e4386f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 10
-  healthBar: {fileID: 0}
-  maxHealth: 2
-  currentHealth: 2
 --- !u!65 &851759251924361369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -282,6 +266,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.411623, y: 1.543671, z: 1.411623}
   m_Center: {x: -0.03917408, y: 0.066024005, z: 0.16663742}
+--- !u!114 &697046316625473556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521589018247486604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3540e4ab982be0043b6a9c9a65543e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookRadius: 30.69
+  iFrames: 0.75
+  health: 2
+  distance: 0
+  damageCooldown: 0
+  RocketPart: {fileID: 0}
 --- !u!1 &1576146821952757510
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +437,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 377880696}
     m_Modifications:
+    - target: {fileID: 3504943155121333376, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
+      propertyPath: m_Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3504943155121333376, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3504943155121333377, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -641,11 +651,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3504943155121333376, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3504943155121333376, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
       propertyPath: m_MaxValue
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3504943155121333377, guid: e2baecd270dae6f47b1c5b738da6b291, type: 3}
       propertyPath: m_Pivot.x

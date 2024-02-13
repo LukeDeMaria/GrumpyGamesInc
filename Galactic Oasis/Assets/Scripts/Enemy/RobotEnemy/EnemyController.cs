@@ -6,16 +6,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10;
-
-    public HealthBar healthBar;
-
-    public int maxHealth;
-    public int currentHealth;
+    public float iFrames = 0.75f;
+    public int health = 1;
+    public float distance;
+    public float damageCooldown = 0;
 
     public GameObject RocketPart;
-
-    public float iFrames = 0.5f;
-    public float damageCooldown = 0;
 
     Transform target;
     NavMeshAgent agent; 
@@ -24,8 +20,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         target = PlayerManager.instance.player.transform; 
-        agent = GetComponent<NavMeshAgent>();
-        currentHealth = maxHealth;
+        agent = GetComponent<NavMeshAgent>(); 
 
     }
 
@@ -36,19 +31,19 @@ public class EnemyController : MonoBehaviour
         {
             damageCooldown -= Time.deltaTime;
         }
-        float distance = Vector3.Distance(target.position, transform.position);
+        distance = Vector3.Distance(target.position, transform.position);
 
 
-        if (distance <= lookRadius) 
+        if (distance <= lookRadius ) 
         {
             agent.SetDestination(target.position);
         }
 
-        if(currentHealth <= 0)
+        if(health <= 0)
         {
             if (gameObject.tag == "Miniboss")
             {
-                Instantiate(RocketPart, transform.position, transform.rotation);
+               Instantiate(RocketPart, transform.position, transform.rotation);
             }
             Destroy(gameObject); 
         }
@@ -64,8 +59,7 @@ public class EnemyController : MonoBehaviour
     {
         if (damageCooldown <= 0)
         {
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
+            health -= damage;
         }
         damageCooldown = iFrames;
     }

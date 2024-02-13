@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 2195395874047905176}
   - component: {fileID: 2195395874047905177}
   - component: {fileID: 2195395874047905178}
-  - component: {fileID: 8406014240282887684}
   - component: {fileID: 989304553}
+  - component: {fileID: 3468764356773948871}
   m_Layer: 9
   m_Name: AlienEnemy
   m_TagString: Untagged
@@ -193,25 +193,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   tpm: {fileID: 0}
---- !u!114 &8406014240282887684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2195395874047905154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2ef567e21a990249b138a7ef6e4386f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookRadius: 31.07
-  healthBar: {fileID: 0}
-  maxHealth: 4
-  currentHealth: 4
-  RocketPart: {fileID: 0}
-  iFrames: 0.5
-  damageCooldown: 0
 --- !u!95 &989304553
 Animator:
   serializedVersion: 5
@@ -233,6 +214,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3468764356773948871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195395874047905154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3540e4ab982be0043b6a9c9a65543e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookRadius: 80.81
+  iFrames: 0.75
+  health: 4
+  distance: 0
+  damageCooldown: 0
+  RocketPart: {fileID: 0}
 --- !u!1001 &2195395873774068978
 PrefabInstance:
   m_ObjectHideFlags: 0
