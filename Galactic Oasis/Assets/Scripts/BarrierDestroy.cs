@@ -6,6 +6,7 @@ public class BarrierDestroy : MonoBehaviour
 {
 
     public int rocketPartsNeeded = 5;
+    public GameObject fixedRocket;
 
     public ThirdPersonMovement tpm;
 
@@ -18,7 +19,8 @@ public class BarrierDestroy : MonoBehaviour
     {
         if(tpm.rocketPartsHad >= rocketPartsNeeded)
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
+            fixedRocket.SetActive(true);
         }
     }
 }
