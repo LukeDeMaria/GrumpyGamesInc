@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10;
-
+    public float iFrames = 0.75f;
     public int health = 1;
     public float distance;
+    public float damageCooldown = 0;
 
     public GameObject RocketPart;
 
@@ -26,6 +27,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (damageCooldown > 0)
+        {
+            damageCooldown -= Time.deltaTime;
+        }
         distance = Vector3.Distance(target.position, transform.position);
 
 
@@ -52,7 +57,11 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        if (damageCooldown <= 0)
+        {
+            health -= damage;
+        }
+        damageCooldown = iFrames;
     }
 
 }

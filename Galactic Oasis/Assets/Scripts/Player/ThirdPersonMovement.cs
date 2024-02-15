@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class ThirdPersonMovement : MonoBehaviour
-{
+{ 
     public CharacterController controller;
     //public GameObject enemySword;
     public GameObject astronautRig;
@@ -18,7 +19,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
-    public DashBar dashBar;
+    public GameObject dashBlue;
+    public GameObject dashGray;
+    TextMeshProUGUI rpText;
 
     public float speed;
     float turnSmoothTime = 0.1f;
@@ -31,6 +34,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [HideInInspector]
     public Transform groundCheck;
     public LayerMask groundMask;
+    public LayerMask groundMask2;
 
     [HideInInspector]
     public Transform killzoneCheck;
@@ -46,11 +50,18 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public LayerMask mushroomMask;
 
+    public LayerMask poisonMask;
+
     public bool isGrounded;
+    public bool isGrounded2;
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
     public bool touchingMushroom;
+    public bool touchingPoison;
+
+    public bool isPoisoned;
+    public bool takingChipDamage;
 
 
     public bool touchingRocketPart;
@@ -58,7 +69,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
     public int rocketPartsHad = 0;
-    public int rocketPartsNeeded = 5;
+   // public int rocketPartsNeeded = 5;
 
 
     public bool hasDashed = false;
@@ -89,8 +100,9 @@ public class ThirdPersonMovement : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
         audioSource = gameObject.GetComponent<AudioSource>();
-
+        rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
+        rpText.text = "0/" + barrierDestroy.rocketPartsNeeded.ToString();
     }
 
     // Update is called once per frame
@@ -102,21 +114,36 @@ public class ThirdPersonMovement : MonoBehaviour
             damageCooldown -= Time.deltaTime;
         }
         isGrounded = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask);
+        isGrounded2 = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask2);
         touchingKillzone = Physics.CheckSphere(killzoneCheck.position, checkDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
         touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
         touchingMushroom = Physics.CheckSphere(mudCheck.position, checkDistance, mushroomMask);
+        touchingPoison = Physics.CheckSphere(mudCheck.position, checkDistance, poisonMask);
         Collider[] collectRocketParts = Physics.OverlapSphere(mudCheck.position, checkDistance, rocketMask);
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
+            rpText.text = rocketPartsHad.ToString() + "/" + barrierDestroy.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
-        if (isGrounded == true)
+        if (isGrounded == true || isGrounded2 == true)
         {
 
             hasDashed = false;
-            dashBar.GetComponent<Slider>().value = 2;
+            dashBlue.SetActive(true);
+            dashGray.SetActive(false);
+            if(isGrounded == true)
+            {
+                isPoisoned = false;
+                takingChipDamage = false;
+            }
+            if(isGrounded2 == true)
+            {
+                isPoisoned = true; 
+                takingChipDamage = true;
+            }
+
             anim.SetTrigger("IsOnGround");
             StopJumpAnimation();
         }
@@ -128,6 +155,17 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingHazard == true)
         {
             TakeDamage(2);
+            
+        }
+        if (touchingPoison == true)
+        {
+            isPoisoned = true;
+            if(takingChipDamage == false)
+            {
+                StartCoroutine(PoisonChipDamage());
+                takingChipDamage=true;
+            }
+            
         }
 
         if (touchingMud == true)
@@ -141,10 +179,10 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (touchingMushroom == true)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            velocity.y = Mathf.Sqrt((jumpHeight *1.5f ) * -2f * gravity);
         }
 
-        if (isGrounded && velocity.y < 0)
+        if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
         {
             velocity.y = -2f;
         }
@@ -157,7 +195,7 @@ public class ThirdPersonMovement : MonoBehaviour
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
         moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && isGrounded == true)
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && (isGrounded == true || isGrounded2 == true))
         {
             WalkAnimation();
         }
@@ -180,7 +218,7 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime); 
         }
 
-       if(Input.GetButtonDown("Jump") && isGrounded)
+       if((Input.GetButtonDown("Jump") && isGrounded) || (Input.GetButtonDown("Jump") && isGrounded2))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             JumpAnimation();
@@ -194,7 +232,8 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = true;
             anim.SetTrigger("IsDashing");
             StartDashAnim();
-            dashBar.GetComponent<Slider>().value = 0;
+            dashBlue.SetActive(false);
+            dashGray.SetActive(true);
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -208,7 +247,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if(collision.gameObject.tag == "RocketPart")
         {
             Destroy(collision.gameObject);
-
+            
         }
     }
 
@@ -272,9 +311,15 @@ public class ThirdPersonMovement : MonoBehaviour
         anim.ResetTrigger("IsDashing");
     }
 
+    IEnumerator PoisonChipDamage()
+    {
+        takingChipDamage = true;
+        yield return new WaitForSeconds(3);
+        Debug.Log("Poison");
+        TakeDamage(1);
+        
+        if (isPoisoned)
+            StartCoroutine(PoisonChipDamage());
+        }
+    }
 
-
-
-
-
-}
