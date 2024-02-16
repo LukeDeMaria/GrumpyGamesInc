@@ -23,7 +23,7 @@ public class MushSpawnProj : MonoBehaviour
 
     void Spawn()
     {
-        Vector3 spawnOffset = new Vector3(5, 0, 5);
+        Vector3 spawnOffset = new Vector3(10, 0, 10);
         Instantiate(projPrefab, transform.position + spawnOffset, transform.rotation);
         float nextSpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         Invoke("Spawn", nextSpawnTime);

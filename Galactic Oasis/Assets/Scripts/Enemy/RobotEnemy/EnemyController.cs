@@ -14,7 +14,9 @@ public class EnemyController : MonoBehaviour
     public GameObject RocketPart;
 
     Transform target;
-    NavMeshAgent agent; 
+    NavMeshAgent agent;
+
+    public HealthBar hpBar;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +62,7 @@ public class EnemyController : MonoBehaviour
         if (damageCooldown <= 0)
         {
             health -= damage;
+            hpBar.SetHealth(health);
         }
         damageCooldown = iFrames;
     }
