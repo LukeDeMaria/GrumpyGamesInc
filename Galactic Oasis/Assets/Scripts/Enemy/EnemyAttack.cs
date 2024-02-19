@@ -50,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
         foreach (Collider player in hitPlayer)
         {
             Debug.Log("HIT!");
-            tpm.TakeDamage(1);
+            tpm.TakeDamage(3);
 
         }
     }

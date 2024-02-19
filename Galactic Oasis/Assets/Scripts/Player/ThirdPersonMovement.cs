@@ -15,6 +15,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public AudioClip deathSound;
     public Transform cam;
 
+    public GameObject respawnPnt;
+    public GameObject player;
+
     public int maxHealth;
     public int currentHealth;
 
@@ -108,7 +111,9 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         Animator anim = astronautRig.GetComponent<Animator>();
+
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
@@ -275,8 +280,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            Respawn();
+            //SceneManager.LoadScene(currentScene.name);
             
-            SceneManager.LoadScene(currentScene.name);
         }
         damageCooldown = iFrames;
     }
@@ -321,5 +327,22 @@ public class ThirdPersonMovement : MonoBehaviour
         if (isPoisoned)
             StartCoroutine(PoisonChipDamage());
         }
+
+    
+    public void Respawn()
+    {
+        if (currentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+            player.transform.position = new Vector3(1.9f,.086f, -35.72f);
+            astronautRig.transform.position = new Vector3(1.9f, .086f, -35.72f);
+            Debug.Log("Dead!!!");
+            Debug.Log("Player Position After Respawn: " + player.transform.position);
+            Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
+
+        }
     }
+    }
+
+
 
