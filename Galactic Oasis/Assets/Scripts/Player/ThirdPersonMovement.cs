@@ -101,7 +101,7 @@ public class ThirdPersonMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
-        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
+        barrierDestroy = GameObject.Find("rocketCrashed").GetComponent<BarrierDestroy>();
         audioSource = gameObject.GetComponent<AudioSource>();
         rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -155,7 +155,7 @@ public class ThirdPersonMovement : MonoBehaviour
         else anim.ResetTrigger("IsOnGround");
         if (touchingKillzone == true)
         {
-            TakeDamage(currentHealth);
+            TakeDamage(maxHealth);
         }
         if (touchingHazard == true)
         {
@@ -331,16 +331,14 @@ public class ThirdPersonMovement : MonoBehaviour
     
     public void Respawn()
     {
-        if (currentHealth <= 0)
-        {
-            currentHealth = maxHealth;
-            player.transform.position = new Vector3(1.9f,.086f, -35.72f);
-            astronautRig.transform.position = new Vector3(1.9f, .086f, -35.72f);
-            Debug.Log("Dead!!!");
+        
+        controller.enabled = false;
+        player.transform.position = respawnPnt.transform.position;
+        controller.enabled = true;
+        TakeDamage(-5);
+        Debug.Log("Dead!!!");
             Debug.Log("Player Position After Respawn: " + player.transform.position);
             Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
-
-        }
     }
     }
 
