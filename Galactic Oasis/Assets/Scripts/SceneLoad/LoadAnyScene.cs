@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; 
 
-public class ToBoletus : MonoBehaviour
+public class LoadAnyScene : MonoBehaviour
 {
     public Transform playerCheck;
     public float checkDistance;
     public LayerMask playerMask;
-
+    public string SceneToLoad;
     public bool isColliding; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class ToBoletus : MonoBehaviour
         isColliding = Physics.CheckSphere(playerCheck.position, checkDistance, playerMask);
         if(isColliding )
         {
-            SceneManager.LoadScene("Boletus");
+            SceneManager.LoadScene(SceneToLoad);
         }
     }
 
