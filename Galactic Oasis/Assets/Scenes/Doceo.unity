@@ -2363,15 +2363,15 @@ Transform:
   - {fileID: 1865020882}
   - {fileID: 157732021}
   - {fileID: 522322234}
+  - {fileID: 443571994}
+  - {fileID: 1408074105}
   - {fileID: 154321948}
   - {fileID: 706257463}
   - {fileID: 31519130}
-  - {fileID: 443571994}
   - {fileID: 285536924}
-  - {fileID: 1057304135}
-  - {fileID: 1408074105}
-  - {fileID: 350658357}
   - {fileID: 2129083524}
+  - {fileID: 1057304135}
+  - {fileID: 350658357}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12480,7 +12480,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 88636649}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &443571995
 MeshCollider:
@@ -31519,6 +31519,10 @@ PrefabInstance:
       propertyPath: SceneToLoad
       value: Boletus
       objectReference: {fileID: 0}
+    - target: {fileID: 8550492658309164122, guid: bc060ad2fa0b5de46812d3b77c182df7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc060ad2fa0b5de46812d3b77c182df7, type: 3}
 --- !u!1001 &1247136589
@@ -35533,7 +35537,7 @@ Transform:
   - {fileID: 1875853765}
   - {fileID: 1618188431}
   m_Father: {fileID: 88636649}
-  m_RootOrder: 13
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413044482 stripped
 GameObject:
@@ -56340,11 +56344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008560945
+      value: -0.000000008560947
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.515279e-10
+      value: 8.5152807e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027143, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.w

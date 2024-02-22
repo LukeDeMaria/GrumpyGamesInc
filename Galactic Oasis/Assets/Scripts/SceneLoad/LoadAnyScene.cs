@@ -21,9 +21,9 @@ public class LoadAnyScene : MonoBehaviour
     void Update()
     {
         isColliding = Physics.CheckSphere(playerCheck.position, checkDistance, playerMask);
-        if(isColliding )
+        if(isColliding)
         {
-            SceneManager.LoadScene(SceneToLoad);
+            LoadTheScene();
         }
     }
 
@@ -31,5 +31,10 @@ public class LoadAnyScene : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(playerCheck.position, checkDistance);
+    }
+
+    public void LoadTheScene()
+    {
+        SceneManager.LoadScene(SceneToLoad);
     }
 }
