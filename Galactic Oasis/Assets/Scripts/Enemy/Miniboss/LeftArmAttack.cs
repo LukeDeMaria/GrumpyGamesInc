@@ -7,8 +7,8 @@ public class LeftArmAttack : MonoBehaviour
     public GameObject leftArm;
     public GameObject player;
     public ThirdPersonMovement tpm;
-    public float attackMinTime = 6.5f;
-    public float attackMaxTime = 12.5f;
+    public float attackMinTime = 10.5f;
+    public float attackMaxTime = 20.5f;
     public int damage = 1;
 
     public Transform attackPoint;
@@ -57,7 +57,7 @@ public class LeftArmAttack : MonoBehaviour
             anim.SetTrigger("AOE");
             AttackFunct();
 
-            float attackTime = Random.Range(attackMinTime, attackMaxTime);
+            float attackTime = Random.Range(attackMinTime + 5, attackMaxTime + 5);
             Invoke("RandomizeNextAttack", attackTime);
         }
     }
