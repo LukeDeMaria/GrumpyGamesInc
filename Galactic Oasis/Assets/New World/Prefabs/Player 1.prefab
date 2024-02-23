@@ -765,10 +765,13 @@ MonoBehaviour:
   audioSource: {fileID: 144377204}
   deathSound: {fileID: 0}
   cam: {fileID: 0}
+  respawnPnt: {fileID: 0}
+  player: {fileID: 9012915200617251544}
   maxHealth: 5
   currentHealth: 5
   healthBar: {fileID: 0}
-  dashBar: {fileID: 0}
+  dashBlue: {fileID: 0}
+  dashGray: {fileID: 0}
   speed: 13
   gravity: -48.8
   checkDistance: 0.4
@@ -776,6 +779,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8256
+  groundMask2:
+    serializedVersion: 2
+    m_Bits: 32768
   killzoneCheck: {fileID: 975003258204665432}
   killzoneMask:
     serializedVersion: 2
@@ -791,11 +797,18 @@ MonoBehaviour:
   mushroomMask:
     serializedVersion: 2
     m_Bits: 8192
+  poisonMask:
+    serializedVersion: 2
+    m_Bits: 16384
   isGrounded: 1
+  isGrounded2: 0
   touchingKillzone: 0
   touchingHazard: 0
   touchingMud: 0
   touchingMushroom: 0
+  touchingPoison: 0
+  isPoisoned: 0
+  takingChipDamage: 0
   touchingRocketPart: 0
   rocketMask:
     serializedVersion: 2
@@ -805,9 +818,9 @@ MonoBehaviour:
   iFrames: 1
   damageCooldown: 0
   jumpHeight: 7
-  dashHeight: 3
-  dashSpeed: 10
-  dashTime: 0.5
+  dashHeight: 1
+  dashSpeed: 20
+  dashTime: 0.25
   horizontalInput: 0
   verticalInput: 0
   barrierDestroy: {fileID: 0}
