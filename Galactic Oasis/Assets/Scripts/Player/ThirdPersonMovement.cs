@@ -335,7 +335,8 @@ public class ThirdPersonMovement : MonoBehaviour
         controller.enabled = false;
         player.transform.position = respawnPnt.transform.position;
         controller.enabled = true;
-        TakeDamage(-5);
+        currentHealth = 5;
+        healthBar.SetHealth(currentHealth);
         Debug.Log("Dead!!!");
             Debug.Log("Player Position After Respawn: " + player.transform.position);
             Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
