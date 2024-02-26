@@ -10,7 +10,7 @@ public class RandomSpin : MonoBehaviour
     void Start()
     {
         randomRotate = Random.Range(1, 8);
-        randomSpeed = Random.Range(100, 201);
+        randomSpeed = Random.Range(40, 90);
     }
 
     // Update is called once per frame
