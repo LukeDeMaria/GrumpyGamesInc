@@ -15,6 +15,9 @@ public class ThirdPersonMovement : MonoBehaviour
     public AudioClip deathSound;
     public Transform cam;
 
+    public GameObject respawnPnt;
+    public GameObject player;
+
     public int maxHealth;
     public int currentHealth;
 
@@ -98,7 +101,7 @@ public class ThirdPersonMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
-        barrierDestroy = GameObject.Find("BarrierWall").GetComponent<BarrierDestroy>();
+        barrierDestroy = GameObject.Find("rocketCrashed").GetComponent<BarrierDestroy>();
         audioSource = gameObject.GetComponent<AudioSource>();
         rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -108,7 +111,9 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         Animator anim = astronautRig.GetComponent<Animator>();
+
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
@@ -150,7 +155,7 @@ public class ThirdPersonMovement : MonoBehaviour
         else anim.ResetTrigger("IsOnGround");
         if (touchingKillzone == true)
         {
-            TakeDamage(currentHealth);
+            TakeDamage(maxHealth);
         }
         if (touchingHazard == true)
         {
@@ -275,8 +280,9 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            Respawn();
+            //SceneManager.LoadScene(currentScene.name);
             
-            SceneManager.LoadScene(currentScene.name);
         }
         damageCooldown = iFrames;
     }
@@ -321,5 +327,21 @@ public class ThirdPersonMovement : MonoBehaviour
         if (isPoisoned)
             StartCoroutine(PoisonChipDamage());
         }
+
+    
+    public void Respawn()
+    {
+        
+        controller.enabled = false;
+        player.transform.position = respawnPnt.transform.position;
+        controller.enabled = true;
+        currentHealth = 5;
+        healthBar.SetHealth(currentHealth);
+        Debug.Log("Dead!!!");
+            Debug.Log("Player Position After Respawn: " + player.transform.position);
+            Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
     }
+    }
+
+
 
