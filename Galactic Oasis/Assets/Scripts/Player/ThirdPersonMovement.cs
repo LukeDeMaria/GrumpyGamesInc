@@ -32,27 +32,29 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 velocity;
     public float gravity = -9.81f;
 
+    [HideInInspector]
     public float checkDistance = 0.4f;
 
     [HideInInspector]
-    public Transform groundCheck;
+    public Transform check;
+    [HideInInspector]
     public LayerMask groundMask;
+    [HideInInspector]
     public LayerMask groundMask2;
 
     [HideInInspector]
-    public Transform killzoneCheck;
     public LayerMask killzoneMask;
 
     [HideInInspector]
-    public Transform hazardCheck;
     public LayerMask hazardMask;
 
     [HideInInspector]
-    public Transform mudCheck;
     public LayerMask mudMask;
 
-    public LayerMask mushroomMask;
+    public LayerMask bouncyLowMask;
+    public LayerMask bouncyHighMask;
 
+    [HideInInspector]
     public LayerMask poisonMask;
 
     public bool isGrounded;
@@ -60,7 +62,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool touchingKillzone;
     public bool touchingHazard;
     public bool touchingMud;
-    public bool touchingMushroom;
+    public bool touchingBouncyLow;
+    public bool touchingBouncyHigh;
     public bool touchingPoison;
 
     public bool isPoisoned;
@@ -91,7 +94,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public BarrierDestroy barrierDestroy;
     Scene currentScene;
     
-
+    [HideInInspector]
     Vector3 moveDir = new Vector3();
 
 
@@ -118,14 +121,15 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             damageCooldown -= Time.deltaTime;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask);
-        isGrounded2 = Physics.CheckSphere(groundCheck.position, checkDistance, groundMask2);
-        touchingKillzone = Physics.CheckSphere(killzoneCheck.position, checkDistance, killzoneMask);
-        touchingHazard = Physics.CheckSphere(hazardCheck.position, checkDistance, hazardMask);
-        touchingMud = Physics.CheckSphere(mudCheck.position, checkDistance, mudMask);
-        touchingMushroom = Physics.CheckSphere(mudCheck.position, checkDistance, mushroomMask);
-        touchingPoison = Physics.CheckSphere(mudCheck.position, checkDistance, poisonMask);
-        Collider[] collectRocketParts = Physics.OverlapSphere(mudCheck.position, checkDistance, rocketMask);
+        isGrounded = Physics.CheckSphere(check.position, checkDistance, groundMask);
+        isGrounded2 = Physics.CheckSphere(check.position, checkDistance, groundMask2);
+        touchingKillzone = Physics.CheckSphere(check.position, checkDistance, killzoneMask);
+        touchingHazard = Physics.CheckSphere(check.position, checkDistance, hazardMask);
+        touchingMud = Physics.CheckSphere(check.position, checkDistance, mudMask);
+        touchingBouncyLow = Physics.CheckSphere(check.position, checkDistance, bouncyLowMask);
+        touchingBouncyHigh = Physics.CheckSphere(check.position, checkDistance, bouncyHighMask);
+        touchingPoison = Physics.CheckSphere(check.position, checkDistance, poisonMask);
+        Collider[] collectRocketParts = Physics.OverlapSphere(check.position, checkDistance, rocketMask);
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
@@ -182,9 +186,13 @@ public class ThirdPersonMovement : MonoBehaviour
             speed = 13;
         }
 
-        if (touchingMushroom == true)
+        if (touchingBouncyLow == true)
         {
-            velocity.y = Mathf.Sqrt((jumpHeight *1.5f ) * -2f * gravity);
+            velocity.y = Mathf.Sqrt((jumpHeight * 2f ) * -2f * gravity);
+        }
+        if (touchingBouncyHigh == true)
+        {
+            velocity.y = Mathf.Sqrt((jumpHeight * 7f) * -2f * gravity);
         }
 
         if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
