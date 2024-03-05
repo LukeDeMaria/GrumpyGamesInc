@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 989304553}
   - component: {fileID: 3468764356773948871}
   - component: {fileID: 246846000088376728}
+  - component: {fileID: 1227427967}
   m_Layer: 9
   m_Name: AlienEnemy
   m_TagString: Untagged
@@ -235,6 +236,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &1227427967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195395874047905154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2684394533800589818
 GameObject:
   m_ObjectHideFlags: 0
