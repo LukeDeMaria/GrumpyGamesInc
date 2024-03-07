@@ -35,7 +35,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [HideInInspector]
     public float checkDistance = 0.4f;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Transform check;
     [HideInInspector]
     public LayerMask groundMask;
