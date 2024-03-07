@@ -52,6 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask mudMask;
 
     public LayerMask bouncyLowMask;
+    public LayerMask bouncyMedMask;
     public LayerMask bouncyHighMask;
 
     [HideInInspector]
@@ -63,6 +64,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool touchingHazard;
     public bool touchingMud;
     public bool touchingBouncyLow;
+    public bool touchingBouncyMed;
     public bool touchingBouncyHigh;
     public bool touchingPoison;
 
@@ -127,6 +129,7 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingHazard = Physics.CheckSphere(check.position, checkDistance, hazardMask);
         touchingMud = Physics.CheckSphere(check.position, checkDistance, mudMask);
         touchingBouncyLow = Physics.CheckSphere(check.position, checkDistance, bouncyLowMask);
+        touchingBouncyMed = Physics.CheckSphere(check.position, checkDistance, bouncyMedMask);
         touchingBouncyHigh = Physics.CheckSphere(check.position, checkDistance, bouncyHighMask);
         touchingPoison = Physics.CheckSphere(check.position, checkDistance, poisonMask);
         Collider[] collectRocketParts = Physics.OverlapSphere(check.position, checkDistance, rocketMask);
@@ -193,6 +196,10 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingBouncyHigh == true)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 7f) * -2f * gravity);
+        }
+        if (touchingBouncyMed == true)
+        {
+            velocity.y = Mathf.Sqrt((jumpHeight * 4f) * -2f * gravity);
         }
 
         if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
