@@ -66,7 +66,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool touchingBouncyLow;
     public bool touchingBouncyMed;
     public bool touchingBouncyHigh;
-    public GameObject deathText;
+    //public GameObject deathText;
     public bool touchingPoison;
 
     public bool isPoisoned;
@@ -142,7 +142,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (isGrounded == true || isGrounded2 == true)
         {
-            deathText.SetActive(false);
+            //deathText.SetActive(false);
 
             hasDashed = false;
             dashBlue.SetActive(true);
@@ -298,7 +298,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (currentHealth <= 0)
         {
             Respawn();
-            deathText.SetActive(true);
+            //deathText.SetActive(true);
             //SceneManager.LoadScene(currentScene.name);
             
         }

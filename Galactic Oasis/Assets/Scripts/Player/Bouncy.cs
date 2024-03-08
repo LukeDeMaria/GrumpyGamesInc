@@ -20,6 +20,6 @@ public class Bouncy : MonoBehaviour
 
     void Bounce()
     {
-        player.velocity.y = jumpVelo;
+        // player.velocity.y = jumpVelo;
     }
 }
