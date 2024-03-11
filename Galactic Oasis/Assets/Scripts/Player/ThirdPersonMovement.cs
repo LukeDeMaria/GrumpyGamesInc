@@ -8,96 +8,29 @@ using TMPro;
 
 public class ThirdPersonMovement : MonoBehaviour
 { 
-    public CharacterController controller;
-    //public GameObject enemySword;
-    public GameObject astronautRig;
-    public AudioSource audioSource;
     public AudioClip deathSound;
-    public Transform cam;
 
-    public GameObject respawnPnt;
-    public GameObject player;
 
-    public int maxHealth;
-    public int currentHealth;
-
-    public HealthBar healthBar;
-    public GameObject dashBlue;
-    public GameObject dashGray;
     TextMeshProUGUI rpText;
 
-    public float speed;
-    float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
     Vector3 velocity;
-    public float gravity = -9.81f;
+    [HideInInspector] public GameObject player, astronautRig, respawnPnt, dashBlue, dashGray;
+    [HideInInspector] public HealthBar healthBar;
+    [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public CharacterController controller;
+    [HideInInspector] public RocketFunc rocket;
+    [HideInInspector] public Transform check, cam;
+    [HideInInspector] public float iFrames = 1.0f, damageCooldown = 0, checkDistance = 0.4f, turnSmoothTime = 0.1f, horizontalInput, verticalInput, turnSmoothVelocity;
+    [HideInInspector] public LayerMask groundMask, groundMask2, killzoneMask, hazardMask, mudMask, bouncyLowMask, bouncyMedMask, bouncyHighMask, poisonMask, rocketMask;
+    [HideInInspector] public bool hasDashed = false, isGrounded, isGrounded2, touchingKillzone, touchingHazard, touchingMud, touchingBouncyLow, touchingBouncyMed, touchingBouncyHigh, touchingRocketPart, touchingPoison, isPoisoned, takingChipDamage;
 
-    [HideInInspector]
-    public float checkDistance = 0.4f;
+    public int rocketPartsHad = 0, maxHealth, currentHealth;
+    public float jumpHeight = 3.0f, gravity = -9.81f, speed, dashHeight, dashSpeed, dashTime;
 
-    //[HideInInspector]
-    public Transform check;
-    [HideInInspector]
-    public LayerMask groundMask;
-    [HideInInspector]
-    public LayerMask groundMask2;
-
-    [HideInInspector]
-    public LayerMask killzoneMask;
-
-    [HideInInspector]
-    public LayerMask hazardMask;
-
-    [HideInInspector]
-    public LayerMask mudMask;
-
-    public LayerMask bouncyLowMask;
-    public LayerMask bouncyMedMask;
-    public LayerMask bouncyHighMask;
-
-    [HideInInspector]
-    public LayerMask poisonMask;
-
-    public bool isGrounded;
-    public bool isGrounded2;
-    public bool touchingKillzone;
-    public bool touchingHazard;
-    public bool touchingMud;
-    public bool touchingBouncyLow;
-    public bool touchingBouncyMed;
-    public bool touchingBouncyHigh;
     //public GameObject deathText;
-    public bool touchingPoison;
 
-    public bool isPoisoned;
-    public bool takingChipDamage;
-
-
-    public bool touchingRocketPart;
-    public LayerMask rocketMask;
-
-
-    public int rocketPartsHad = 0;
-   // public int rocketPartsNeeded = 5;
-
-
-    public bool hasDashed = false;
-
-    public float iFrames = 1.0f;
-
-    [HideInInspector]
-    public float damageCooldown = 0;
-    
-    public float jumpHeight = 3f;
-    public float dashHeight;
-    public float dashSpeed;
-    public float dashTime;
-    public float horizontalInput;
-    public float verticalInput;
-    public BarrierDestroy barrierDestroy;
     Scene currentScene;
     
-    [HideInInspector]
     Vector3 moveDir = new Vector3();
 
 
@@ -107,11 +40,11 @@ public class ThirdPersonMovement : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
-        barrierDestroy = GameObject.Find("rocketCrashed").GetComponent<BarrierDestroy>();
+        rocket = GameObject.Find("rocketCrashed").GetComponent<RocketFunc>();
         audioSource = gameObject.GetComponent<AudioSource>();
         rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
-        rpText.text = "0/" + barrierDestroy.rocketPartsNeeded.ToString();
+        rpText.text = "0/" + rocket.rocketPartsNeeded.ToString();
     }
 
     // Update is called once per frame
@@ -137,7 +70,7 @@ public class ThirdPersonMovement : MonoBehaviour
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
-            rpText.text = rocketPartsHad.ToString() + "/" + barrierDestroy.rocketPartsNeeded.ToString();
+            rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
         if (isGrounded == true || isGrounded2 == true)
