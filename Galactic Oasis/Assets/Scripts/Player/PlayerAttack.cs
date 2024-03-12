@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
 
     public GameObject playerSword;
+    public GameObject player;
     public bool canAttack = true;
     public float attackCooldown = .5f;
 
@@ -33,8 +34,10 @@ public class PlayerAttack : MonoBehaviour
     public void SwordAttack()
     {
         //canAttack = false;
-        Animator anim = playerSword.GetComponent<Animator>();
-        anim.SetTrigger("PlayerAttack");
+        Animator anim = player.GetComponent<Animator>();
+        Animator anim2 = playerSword.GetComponent<Animator>();
+        anim.SetTrigger("IsAttacking");
+        anim2.SetTrigger("PlayerAttack");
 
         SwordFunct(); 
     }

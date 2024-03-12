@@ -30,13 +30,12 @@ public class ThirdPersonMovement : MonoBehaviour
     //public GameObject deathText;
 
     Scene currentScene;
-    
     Vector3 moveDir = new Vector3();
+    public Animator anim;
 
 
     void Start()
     {
-        Animator anim = astronautRig.GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
@@ -50,8 +49,6 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        Animator anim = astronautRig.GetComponent<Animator>();
 
         if (damageCooldown > 0)
         {
@@ -185,8 +182,6 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(dashHeight * -2f * gravity);
             StartCoroutine(Dash());
             hasDashed = true;
-            anim.SetTrigger("IsDashing");
-            StartDashAnim();
             dashBlue.SetActive(false);
             dashGray.SetActive(true);
         }
@@ -209,6 +204,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+        anim.SetTrigger("IsDashing");
         float startTime = Time.time;
 
         while(Time.time < startTime + dashTime )
@@ -240,32 +236,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void WalkAnimation()
     {
-        Animator anim = astronautRig.GetComponent<Animator>();
         anim.SetTrigger("IsWalking");
     }
 
     public void StopWalkAnimation()
     {
-        Animator anim = astronautRig.GetComponent<Animator>();
         anim.ResetTrigger("IsWalking");
     }
 
     public void JumpAnimation()
     {
-        Animator anim = astronautRig.GetComponent<Animator>();
         anim.SetTrigger("IsJumping");
     }
 
     public void StopJumpAnimation()
     {
-        Animator anim = astronautRig.GetComponent<Animator>();
         anim.ResetTrigger("IsJumping");
-    }
-
-    public void StartDashAnim()
-    {
-        Animator anim = astronautRig.GetComponent<Animator>();
-        anim.ResetTrigger("IsDashing");
     }
 
     IEnumerator PoisonChipDamage()

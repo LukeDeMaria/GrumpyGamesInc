@@ -1010,7 +1010,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -1027,22 +1027,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b21cc6dcf9a6ae42a96430e7005280e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 9012915200617251525}
-  astronautRig: {fileID: 2506876041608349155}
-  audioSource: {fileID: 144377204}
   deathSound: {fileID: 0}
-  cam: {fileID: 0}
-  respawnPnt: {fileID: 0}
   player: {fileID: 9012915200617251544}
-  maxHealth: 5
-  currentHealth: 5
-  healthBar: {fileID: 0}
+  astronautRig: {fileID: 2506876041608349155}
+  respawnPnt: {fileID: 0}
   dashBlue: {fileID: 0}
   dashGray: {fileID: 0}
-  speed: 13
-  gravity: -48.8
+  healthBar: {fileID: 0}
+  audioSource: {fileID: 144377204}
+  controller: {fileID: 9012915200617251525}
+  rocket: {fileID: 0}
+  check: {fileID: 9012915199225840302}
+  cam: {fileID: 0}
+  iFrames: 1
+  damageCooldown: 0
   checkDistance: 0.4
-  check: {fileID: 0}
+  turnSmoothTime: 0.1
+  horizontalInput: 0
+  verticalInput: 0
+  turnSmoothVelocity: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 8256
@@ -1070,6 +1073,10 @@ MonoBehaviour:
   poisonMask:
     serializedVersion: 2
     m_Bits: 16384
+  rocketMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  hasDashed: 0
   isGrounded: 1
   isGrounded2: 0
   touchingKillzone: 0
@@ -1078,24 +1085,19 @@ MonoBehaviour:
   touchingBouncyLow: 0
   touchingBouncyMed: 0
   touchingBouncyHigh: 0
+  touchingRocketPart: 0
   touchingPoison: 0
   isPoisoned: 0
   takingChipDamage: 0
-  touchingRocketPart: 0
-  rocketMask:
-    serializedVersion: 2
-    m_Bits: 2048
   rocketPartsHad: 0
-  hasDashed: 0
-  iFrames: 1
-  damageCooldown: 0
+  maxHealth: 5
+  currentHealth: 5
   jumpHeight: 7
+  gravity: -48.8
+  speed: 13
   dashHeight: 1
   dashSpeed: 20
   dashTime: 0.25
-  horizontalInput: 0
-  verticalInput: 0
-  barrierDestroy: {fileID: 0}
 --- !u!64 &6369742261844155624
 MeshCollider:
   m_ObjectHideFlags: 0
