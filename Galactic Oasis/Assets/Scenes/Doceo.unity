@@ -9066,6 +9066,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9314aad2a9629a54785011c615d29c62, type: 3}
   m_PrefabInstance: {fileID: 335708278}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &336043869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
+  m_PrefabInstance: {fileID: 1430014027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &340079998
 GameObject:
   m_ObjectHideFlags: 0
@@ -33082,6 +33087,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trunk (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
 --- !u!4 &1430014028 stripped
@@ -33089,6 +33106,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
   m_PrefabInstance: {fileID: 1430014027}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1430014031
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336043869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1226817584057097758, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
 --- !u!1 &1441011420
 GameObject:
   m_ObjectHideFlags: 0
@@ -34868,6 +34899,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499316433}
   m_Mesh: {fileID: 7391211071525590566, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+--- !u!1 &1501287484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2506876041608349155, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+  m_PrefabInstance: {fileID: 9012915200476153781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1501735404
 GameObject:
   m_ObjectHideFlags: 0
@@ -52213,11 +52249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -7.8262576e-36
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1.4143959e-36
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027140, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LookAt
@@ -52265,11 +52301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: 0.000000012537752
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0000000021717108
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
@@ -52428,6 +52464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2803611959763753527, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1501287484}
     - target: {fileID: 9012915200617251525, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
       propertyPath: m_SlopeLimit
       value: 50

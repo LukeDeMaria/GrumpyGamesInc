@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558171608}
   m_LocalRotation: {x: 0, y: -0.9967649, z: -0, w: -0.08037281}
-  m_LocalPosition: {x: -0.00014837204, y: 0.3359425, z: 0.00091405597}
+  m_LocalPosition: {x: -0.00014837204, y: 0.16, z: 0.00091405597}
   m_LocalScale: {x: -0.15999995, y: 1.59, z: 0.18999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,7 +126,7 @@ Transform:
   - {fileID: 7643784078653284520}
   m_Father: {fileID: 4071694410695825423}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.006148, y: 89.194115, z: 90.04736}
 --- !u!1 &1091915125038097830
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +797,7 @@ Transform:
   - {fileID: 5780478531541131223}
   m_Father: {fileID: 5950074943688722455}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.3187578, y: 89.19185, z: 90.04713}
 --- !u!1 &8504629128411466045
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +895,7 @@ Transform:
   - {fileID: 3671138200952374057}
   m_Father: {fileID: 8994630258064188535}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.845225e-17, y: -1.2952075e-15, z: -3.4088924}
 --- !u!1 &9012915199225840303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   turnSmoothVelocity: 0
   groundMask:
     serializedVersion: 2
-    m_Bits: 8256
+    m_Bits: 139328
   groundMask2:
     serializedVersion: 2
     m_Bits: 32768
@@ -1098,6 +1098,7 @@ MonoBehaviour:
   dashHeight: 1
   dashSpeed: 20
   dashTime: 0.25
+  anim: {fileID: 2464539460537422930}
 --- !u!64 &6369742261844155624
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1122,7 +1123,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 641c6124e412e3b4fb0e69169fcdf1eb, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1229,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2924884280204993486, guid: b8b08700efe021c4f8e9f8dc458e5db1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.002
       objectReference: {fileID: 0}
     - target: {fileID: 2924884280204993486, guid: b8b08700efe021c4f8e9f8dc458e5db1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1317,10 +1318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSword: {fileID: 8165590754047084070}
+  player: {fileID: 2506876041608349155}
   canAttack: 1
   attackCooldown: 0
   attackPoint: {fileID: 1558171609}
-  attackRange: 0.5
+  attackRange: 1.7
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
