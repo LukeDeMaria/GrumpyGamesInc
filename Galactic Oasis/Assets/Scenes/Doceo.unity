@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.25975102, g: 0.37765044, b: 0.45928207, a: 1}
+  m_IndirectSpecularColor: {r: 0.47780967, g: 0.59352046, b: 0.5679908, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -46261,6 +46261,25 @@ Transform:
   m_Father: {fileID: 252538273}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 10.905, z: 0}
+--- !u!1 &1918792816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1999066117639251830, guid: 055699f7cc5b8664c97b383c14e5452d, type: 3}
+  m_PrefabInstance: {fileID: 743076586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1918792820
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918792816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3726135710789635634, guid: 055699f7cc5b8664c97b383c14e5452d, type: 3}
 --- !u!1 &1923001132
 GameObject:
   m_ObjectHideFlags: 0
@@ -48084,6 +48103,25 @@ Transform:
   m_Father: {fileID: 993864126}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 7.101, z: 0}
+--- !u!1 &1974312831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1894766947771209732, guid: 055699f7cc5b8664c97b383c14e5452d, type: 3}
+  m_PrefabInstance: {fileID: 743076586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1974312835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974312831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6760342075559649822, guid: 055699f7cc5b8664c97b383c14e5452d, type: 3}
 --- !u!1 &1979458081
 GameObject:
   m_ObjectHideFlags: 0
@@ -52722,7 +52760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027143, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027143, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
@@ -52758,27 +52796,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8532899
+      value: 2.242158
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -9.258397
+      value: -11.49215
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189663760548, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8532899
+      value: 2.242158
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189663760548, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -9.258397
+      value: -11.49215
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189818312512, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.8532899
+      value: 2.242158
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189818312512, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -9.258397
+      value: -11.49215
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189927598400, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_Follow
@@ -52961,14 +52999,6 @@ PrefabInstance:
       propertyPath: barrierDestroy
       value: 
       objectReference: {fileID: 1234358607}
-    - target: {fileID: 9012915200617251546, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
-      propertyPath: bouncyLowMask.m_Bits
-      value: 8192
-      objectReference: {fileID: 0}
-    - target: {fileID: 9012915200617251546, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
-      propertyPath: bouncyHighMask.m_Bits
-      value: 131072
-      objectReference: {fileID: 0}
     - target: {fileID: 9012915200617251547, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
       propertyPath: m_RootOrder
       value: 13
