@@ -5,54 +5,46 @@ using UnityEngine;
 public class EyeSpinAttack : MonoBehaviour
 {
     public GameObject player;
-    public GameObject eye;
     public Transform attackPoint;
     public ThirdPersonMovement tpm;
-    public float attackMinTime;
-    public float attackMaxTime;
+    public float attackTime = 6.0f;
     public float attackRange = 0.5f;
     public LayerMask playerLayer;
     public LookAtPlayer lookAtPlayer;
+    public TowerEye towerEye;
     public UnityEngine.AI.NavMeshAgent agent;
+
+    public int rotateSpeed;
+    public float timer;
 
 
     // Start is called before the first frame update
     void Start()
     {
         agent.updateRotation = false;
-        Invoke("SpinAttack", attackMaxTime);
         lookAtPlayer = GetComponent<LookAtPlayer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (timer > 5.99 && timer < 6.50) Spin();
+        if (timer >= 8) StopSpin();
     }
 
-    public void SpinAttack()
+    public void StopSpin()
     {
-        lookAtPlayer.canFollow = false;
-        Quaternion newRotation = eye.transform.rotation;
-        eye.transform.rotation = Quaternion.RotateTowards(eye.transform.rotation, newRotation, Time.deltaTime * 180);
-
-        //brackeys melee combat tutorial 
-        EnemySpinFunct();
-
-        float attackTime = Random.Range(attackMinTime, attackMaxTime);
-        lookAtPlayer.canFollow = true;
-        Invoke("SpinAttack", attackTime);
+        timer = 0;
     }
 
-    void EnemySpinFunct()
+    void Spin()
     {
-        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-
-        foreach (Collider player in hitPlayer)
-        {
-            Debug.Log("HIT!");
-            tpm.TakeDamage(2);
-
-        }
+        lookAtPlayer.enabled = false;
+        towerEye.enabled = false;
+        transform.Rotate(0, rotateSpeed, 0);
+        lookAtPlayer.enabled = true;
+        //towerEye.enabled = true;
     }
 }

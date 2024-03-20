@@ -58,8 +58,8 @@ GameObject:
   - component: {fileID: 2265747552414620182}
   - component: {fileID: 2265747552414620187}
   - component: {fileID: 2265747552414620184}
-  - component: {fileID: 2265747552414620186}
-  m_Layer: 0
+  - component: {fileID: 2544485424907385723}
+  m_Layer: 10
   m_Name: SpinBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,20 +131,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2265747552414620186
-MeshCollider:
+--- !u!136 &2544485424907385723
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2265747552414620183}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Radius: 0.5000002
+  m_Height: 2.000001
+  m_Direction: 1
+  m_Center: {x: 0.00000005960466, y: -5.293956e-23, z: -0.000015348196}
 --- !u!1 &2772258978805403748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,7 +3724,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 15
+  m_VersionIndex: 18
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3741,11 +3741,11 @@ GameObject:
   - component: {fileID: 1240131353479549365}
   - component: {fileID: 5626836353210200242}
   - component: {fileID: 2668605708124065555}
+  - component: {fileID: 5626836353210200248}
   - component: {fileID: 5626836353210200244}
   - component: {fileID: 5626836353210200247}
   - component: {fileID: 5626836353210200246}
   - component: {fileID: 5626836353210200249}
-  - component: {fileID: 5626836353210200248}
   m_Layer: 6
   m_Name: ey boss
   m_TagString: Untagged
@@ -3760,7 +3760,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3111334132792256309}
-  m_LocalRotation: {x: -0, y: -0.72179973, z: -0, w: 0.692102}
+  m_LocalRotation: {x: 0, y: -0.7218025, z: 0, w: 0.6920991}
   m_LocalPosition: {x: -88.41, y: 215.14, z: 21.32}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -9541,11 +9541,36 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7
+  m_VersionIndex: 10
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &5626836353210200248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111334132792256309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16baaf87100bc9d4b9c4268358b64109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attackPoint: {fileID: 2265747552414620182}
+  tpm: {fileID: 0}
+  attackTime: 6
+  attackRange: 0.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  lookAtPlayer: {fileID: 5626836353210200249}
+  towerEye: {fileID: 2265747551887424649}
+  agent: {fileID: 5626836353210200246}
+  rotateSpeed: 5
+  timer: 0
 --- !u!114 &5626836353210200244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9608,37 +9633,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3111334132792256309}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1743a82e860db14eb3757ca366fa044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  canFollow: 1
---- !u!114 &5626836353210200248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111334132792256309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16baaf87100bc9d4b9c4268358b64109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  eye: {fileID: 3111334132792256309}
-  attackPoint: {fileID: 2265747552414620182}
-  tpm: {fileID: 0}
-  attackMinTime: 3
-  attackMaxTime: 6
-  attackRange: 0.5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  lookAtPlayer: {fileID: 5626836353210200249}
-  agent: {fileID: 5626836353210200246}
 --- !u!1 &3896268690057869655
 GameObject:
   m_ObjectHideFlags: 0
@@ -16877,7 +16877,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7
+  m_VersionIndex: 10
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
