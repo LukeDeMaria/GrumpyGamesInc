@@ -13,6 +13,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     TextMeshProUGUI rpText;
 
+    public LayerMask enemyMask, hazard2Mask;
+
     Vector3 velocity;
     [HideInInspector] public GameObject player, astronautRig, respawnPnt, dashBlue, dashGray;
     [HideInInspector] public HealthBar healthBar;
@@ -22,7 +24,7 @@ public class ThirdPersonMovement : MonoBehaviour
     [HideInInspector] public Transform check, cam;
     [HideInInspector] public float iFrames = 1.0f, damageCooldown = 0, checkDistance = 0.4f, turnSmoothTime = 0.1f, horizontalInput, verticalInput, turnSmoothVelocity;
     public LayerMask groundMask, groundMask2, killzoneMask, hazardMask, mudMask, bouncyLowMask, bouncyMedMask, bouncyHighMask, poisonMask, rocketMask;
-    [HideInInspector] public bool hasDashed = false, isGrounded, isGrounded2, touchingKillzone, touchingHazard, touchingMud, touchingBouncyLow, touchingBouncyMed, touchingBouncyHigh, touchingRocketPart, touchingPoison, isPoisoned, takingChipDamage;
+    [HideInInspector] public bool hasDashed = false, isGrounded, isGrounded2, touchingKillzone, touchingHazard, touchingHazard2, touchingMud, touchingBouncyLow, touchingBouncyMed, touchingBouncyHigh, touchingRocketPart, touchingPoison, isPoisoned, takingChipDamage;
 
     public int rocketPartsHad = 0, maxHealth, currentHealth;
     public float jumpHeight = 3.0f, gravity = -9.81f, speed, dashHeight, dashSpeed, dashTime;
@@ -58,6 +60,7 @@ public class ThirdPersonMovement : MonoBehaviour
         isGrounded2 = Physics.CheckSphere(check.position, checkDistance, groundMask2);
         touchingKillzone = Physics.CheckSphere(check.position, checkDistance, killzoneMask);
         touchingHazard = Physics.CheckSphere(check.position, checkDistance, hazardMask);
+        touchingHazard2 = Physics.CheckSphere(check.position, checkDistance, hazard2Mask);
         touchingMud = Physics.CheckSphere(check.position, checkDistance, mudMask);
         touchingBouncyLow = Physics.CheckSphere(check.position, checkDistance, bouncyLowMask);
         touchingBouncyMed = Physics.CheckSphere(check.position, checkDistance, bouncyMedMask);
@@ -100,6 +103,11 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             TakeDamage(2);
             
+        }
+        if (touchingHazard2 == true)
+        {
+            TakeDamage(1);
+
         }
         if (touchingPoison == true)
         {

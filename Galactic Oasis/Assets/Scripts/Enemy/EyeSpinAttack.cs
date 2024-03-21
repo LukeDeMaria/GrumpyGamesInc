@@ -5,10 +5,7 @@ using UnityEngine;
 public class EyeSpinAttack : MonoBehaviour
 {
     public GameObject player;
-    public Transform attackPoint;
     public ThirdPersonMovement tpm;
-    public float attackTime = 6.0f;
-    public float attackRange = 0.5f;
     public LayerMask playerLayer;
     public LookAtPlayer lookAtPlayer;
     public TowerEye towerEye;
