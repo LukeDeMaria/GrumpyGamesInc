@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47780967, g: 0.59352046, b: 0.5679908, a: 1}
+  m_IndirectSpecularColor: {r: 0.25975102, g: 0.37765044, b: 0.45928207, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17567,10 +17567,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6865902442336125220, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 9064754799191586492, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -28923,7 +28919,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7108442245671196084, guid: bc060ad2fa0b5de46812d3b77c182df7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc060ad2fa0b5de46812d3b77c182df7, type: 3}
 --- !u!1 &1248214779
 GameObject:
@@ -40166,7 +40163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1521589018247486606, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.16
+      value: 7.69
       objectReference: {fileID: 0}
     - target: {fileID: 1521589018247486606, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40174,7 +40171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1521589018247486606, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.77
+      value: 40.03
       objectReference: {fileID: 0}
     - target: {fileID: 1521589018247486606, guid: 0980d11b60e25fc4c8da65da2978ffb8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52760,7 +52757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027143, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188595027143, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
@@ -52788,7 +52785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
@@ -52999,6 +52996,10 @@ PrefabInstance:
       propertyPath: barrierDestroy
       value: 
       objectReference: {fileID: 1234358607}
+    - target: {fileID: 9012915200617251546, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: rocketPartsHad
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9012915200617251547, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
       propertyPath: m_RootOrder
       value: 13

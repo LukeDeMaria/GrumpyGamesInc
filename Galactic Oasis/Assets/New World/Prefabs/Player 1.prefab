@@ -1028,6 +1028,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  hazard2Mask:
+    serializedVersion: 2
+    m_Bits: 524288
   player: {fileID: 9012915200617251544}
   astronautRig: {fileID: 2506876041608349155}
   respawnPnt: {fileID: 0}
@@ -1081,6 +1087,7 @@ MonoBehaviour:
   isGrounded2: 0
   touchingKillzone: 0
   touchingHazard: 0
+  touchingHazard2: 0
   touchingMud: 0
   touchingBouncyLow: 0
   touchingBouncyMed: 0
