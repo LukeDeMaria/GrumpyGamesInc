@@ -14,9 +14,10 @@ public class ThirdPersonMovement : MonoBehaviour
     TextMeshProUGUI rpText;
 
     public LayerMask enemyMask, hazard2Mask;
+    public GameObject player;
 
     Vector3 velocity;
-    [HideInInspector] public GameObject player, astronautRig, respawnPnt, dashBlue, dashGray;
+    [HideInInspector] public GameObject astronautRig, respawnPnt, dashBlue, dashGray;
     [HideInInspector] public HealthBar healthBar;
     [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public CharacterController controller;
