@@ -38,6 +38,9 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 moveDir = new Vector3();
     public Animator anim;
 
+    public int enemiesToKill;
+    public int enemiesKilled = 0;
+
 
     void Start()
     {
@@ -206,6 +209,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        
     }
 
     void OnCollisionEnter(Collision collision)

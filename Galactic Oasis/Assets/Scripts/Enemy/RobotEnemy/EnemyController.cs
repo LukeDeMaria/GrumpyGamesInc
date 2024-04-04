@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public int health = 1;
     public float distance;
     public float damageCooldown = 0;
+    public ThirdPersonMovement tpm;
 
     public GameObject RocketPart;
 
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tpm = GameObject.Find("Player").GetComponent<ThirdPersonMovement>();
         target = PlayerManager.instance.player.transform; 
         agent = GetComponent<NavMeshAgent>(); 
 
@@ -43,10 +45,13 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
+            
             if (gameObject.tag == "Miniboss")
             {
                Instantiate(RocketPart, transform.position, transform.rotation);
             }
+            tpm.enemiesKilled++;
+            
             Destroy(gameObject); 
         }
     }
