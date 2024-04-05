@@ -276,7 +276,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8368722655750445499, guid: 0019dae40284a6542b962439f15eb47f, type: 3}
+  - {fileID: 2100000, guid: 26cf7e8275de35b40a16e6c5fa7cd112, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1033,8 +1033,11 @@ MonoBehaviour:
     m_Bits: 512
   hazard2Mask:
     serializedVersion: 2
-    m_Bits: 524288
+    m_Bits: 1024
   player: {fileID: 9012915200617251544}
+  deathScreen: {fileID: 0}
+  invinc: {fileID: 2100000, guid: b4371c8d7c3f9b0448837c5ebdd7b270, type: 2}
+  defaultAstro: {fileID: 2100000, guid: 26cf7e8275de35b40a16e6c5fa7cd112, type: 2}
   astronautRig: {fileID: 2506876041608349155}
   respawnPnt: {fileID: 0}
   dashBlue: {fileID: 0}

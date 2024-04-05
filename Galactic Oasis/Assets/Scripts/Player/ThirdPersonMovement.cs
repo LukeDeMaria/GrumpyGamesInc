@@ -15,6 +15,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public LayerMask enemyMask, hazard2Mask;
     public GameObject player;
+    public GameObject deathScreen;
+    public Material invinc, defaultAstro;
 
     Vector3 velocity;
     [HideInInspector] public GameObject astronautRig, respawnPnt, dashBlue, dashGray;
@@ -36,6 +38,9 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 moveDir = new Vector3();
     public Animator anim;
 
+    public int enemiesToKill;
+    public int enemiesKilled = 0;
+
 
     void Start()
     {
@@ -56,6 +61,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
+            astronautRig.GetComponent<SkinnedMeshRenderer>().material = invinc;
         }
         isGrounded = Physics.CheckSphere(check.position, checkDistance, groundMask);
         isGrounded2 = Physics.CheckSphere(check.position, checkDistance, groundMask2);
@@ -73,6 +79,10 @@ public class ThirdPersonMovement : MonoBehaviour
             rocketPartsHad++;
             rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
+        }
+        if (damageCooldown <= 0)
+        {
+            astronautRig.GetComponent<SkinnedMeshRenderer>().material = defaultAstro;
         }
         if (isGrounded == true || isGrounded2 == true)
         {
@@ -199,6 +209,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -229,16 +240,16 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (damageCooldown <= 0)
         {
+
             currentHealth -= damage;
-           // audioSource.PlayOneShot(deathSound, 1);
+            // audioSource.PlayOneShot(deathSound, 1);
             healthBar.SetHealth(currentHealth);
         }
         if (currentHealth <= 0)
         {
-            Respawn();
-            //deathText.SetActive(true);
-            //SceneManager.LoadScene(currentScene.name);
-            
+            deathScreen.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+
         }
         damageCooldown = iFrames;
     }
@@ -286,6 +297,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Debug.Log("Dead!!!");
             Debug.Log("Player Position After Respawn: " + player.transform.position);
             Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     }
 
