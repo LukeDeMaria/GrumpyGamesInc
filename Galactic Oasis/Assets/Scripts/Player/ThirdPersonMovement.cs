@@ -40,6 +40,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public int enemiesToKill;
     public int enemiesKilled = 0;
+    public bool enemyRocketPartGot = false; 
 
 
     void Start()
@@ -209,7 +210,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
-        
+        if(!enemyRocketPartGot && enemiesKilled >= enemiesToKill)
+        {
+            rocketPartsHad++;
+            rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
+            enemyRocketPartGot = true;
+        }
+
     }
 
     void OnCollisionEnter(Collision collision)
