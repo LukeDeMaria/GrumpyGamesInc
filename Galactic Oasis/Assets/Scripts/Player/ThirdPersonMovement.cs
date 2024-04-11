@@ -7,8 +7,8 @@ using TMPro;
 
 
 public class ThirdPersonMovement : MonoBehaviour
-{ 
-    public AudioClip deathSound;
+{
+    public AudioClip[] soundFX;
 
 
     TextMeshProUGUI rpText;
@@ -228,7 +228,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-
     IEnumerator Dash()
     {
         anim.SetTrigger("IsDashing");
@@ -245,18 +244,18 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        audioSource.PlayOneShot(soundFX[Random.Range(0,1)], 1);
         if (damageCooldown <= 0)
         {
 
             currentHealth -= damage;
-            // audioSource.PlayOneShot(deathSound, 1);
             healthBar.SetHealth(currentHealth);
         }
         if (currentHealth <= 0)
         {
             deathScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
-
+            audioSource.mute = true;
         }
         damageCooldown = iFrames;
     }
@@ -295,7 +294,7 @@ public class ThirdPersonMovement : MonoBehaviour
     
     public void Respawn()
     {
-        
+        audioSource.mute = false;
         controller.enabled = false;
         player.transform.position = respawnPnt.transform.position;
         controller.enabled = true;

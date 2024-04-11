@@ -7,8 +7,9 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject playerSword;
     public GameObject player;
-    public bool canAttack = true;
-    public float attackCooldown = .5f;
+    public ThirdPersonMovement tpm;
+    public float attackCooldown;
+    public float maxCooldown = 1.1f;
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
@@ -22,9 +23,13 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            if (canAttack)
+            if (attackCooldown <= 0)
             {
                 SwordAttack();
             }
@@ -33,19 +38,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void SwordAttack()
     {
-        //canAttack = false;
+        tpm.audioSource.PlayOneShot(tpm.soundFX[2], 1);
         Animator anim = player.GetComponent<Animator>();
-        Animator anim2 = playerSword.GetComponent<Animator>();
         anim.SetTrigger("IsAttacking");
-        anim2.SetTrigger("PlayerAttack");
-
-        SwordFunct(); 
-    }
-
-    IEnumerator ResetAttackCooldown()
-    {
-        yield return new WaitForSeconds(attackCooldown);
-        //canAttack = true;
+    
+        SwordFunct();
+        attackCooldown = maxCooldown;
     }
 
     void OnDrawGizmosSelected()
