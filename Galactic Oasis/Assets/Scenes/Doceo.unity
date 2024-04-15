@@ -11341,6 +11341,8 @@ MonoBehaviour:
   distance: 0
   damageCooldown: 0
   tpm: {fileID: 0}
+  invinc: {fileID: 0}
+  defaultEnemy: {fileID: 0}
   RocketPart: {fileID: 0}
   hpBar: {fileID: 0}
 --- !u!195 &453842931
@@ -52699,7 +52701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188159350325, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
@@ -52751,7 +52753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
@@ -52759,27 +52761,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6897044
+      value: 2.520722
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -8.918905
+      value: -11.83753
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189663760548, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6897044
+      value: 2.520722
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189663760548, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -8.918905
+      value: -11.83753
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189818312512, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6897044
+      value: 2.520722
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189818312512, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -8.918905
+      value: -11.83753
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189927598400, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_Follow
@@ -52914,10 +52916,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1558171609, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558171609, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558171609, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2803611959763753527, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1501287484}
+    - target: {fileID: 2803611959763753527, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
+      propertyPath: attackRange
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 9012915200617251525, guid: 713a1c75523b3e549be523f485f10b8b, type: 3}
       propertyPath: m_SlopeLimit
       value: 50
