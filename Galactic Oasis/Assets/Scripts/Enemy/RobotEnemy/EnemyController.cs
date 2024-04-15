@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        tpm.audioSource.PlayOneShot(tpm.soundFX[4], 1);
+        tpm.audioSource.PlayOneShot(tpm.soundFX[4], .4f);
         if (damageCooldown <= 0)
         {
             health -= damage;
