@@ -19654,6 +19654,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836393461}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &838896962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1661926259656006245, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
+  m_PrefabInstance: {fileID: 969098689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &838896966
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838896962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3194826189641995282, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
 --- !u!1 &839638257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1392142087787808269, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
@@ -22475,6 +22494,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -1392142087787808269, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -1392142087787808269, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -22501,6 +22524,10 @@ PrefabInstance:
     - target: {fileID: 1661926259656006245, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661926259656006245, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1661926259656006245, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -33299,7 +33326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
       propertyPath: m_ScaleInLightmap
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 63a0a2a7fcdf9644898189a10fd79128, type: 3}
       propertyPath: m_Name
@@ -45836,6 +45863,25 @@ Transform:
   m_Father: {fileID: 88636649}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 86.664, z: 0}
+--- !u!1 &1902856496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1392142087787808269, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
+  m_PrefabInstance: {fileID: 969098689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1902856500
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902856496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7366651264421461343, guid: 794d7e0f0a7f56d4fb0d3753b36b7fe8, type: 3}
 --- !u!1 &1906061892
 GameObject:
   m_ObjectHideFlags: 0
@@ -49891,14 +49937,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037772866}
-  m_LocalRotation: {x: 0.32236898, y: -0.64847744, z: -0.35668054, w: 0.5901986}
-  m_LocalPosition: {x: 148.93475, y: -27.397781, z: -42.157127}
+  m_LocalRotation: {x: -0.429218, y: -0.6015208, z: -0.34893787, w: -0.5763567}
+  m_LocalPosition: {x: 144.82, y: -32.61, z: -40.18}
   m_LocalScale: {x: 4.1200004, y: 4.12, z: 4.1200004}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 88636649}
   m_RootOrder: 27
-  m_LocalEulerAnglesHint: {x: -47.76, y: -25.8, z: -39.1}
+  m_LocalEulerAnglesHint: {x: -184.3, y: -84.7, z: -112.9}
 --- !u!64 &2037772868
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49940,7 +49986,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.02
+  m_ScaleInLightmap: 1
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
