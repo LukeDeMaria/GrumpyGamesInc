@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public float distance;
     public float damageCooldown = 0;
     public ThirdPersonMovement tpm;
-    public Material invinc, defaultEnemy;
+    //public Material invinc, defaultEnemy;
 
     public GameObject RocketPart;
 
