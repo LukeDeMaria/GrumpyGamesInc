@@ -26,8 +26,8 @@ public class ThirdPersonMovement : MonoBehaviour
     [HideInInspector] public RocketFunc rocket;
     public Transform check, cam;
     [HideInInspector] public float iFrames = 1.0f, damageCooldown = 0, checkDistance = 0.4f, turnSmoothTime = 0.1f, horizontalInput, verticalInput, turnSmoothVelocity;
-    public LayerMask groundMask, groundMask2, killzoneMask, hazardMask, mudMask, bouncyLowMask, bouncyMedMask, bouncyHighMask, poisonMask, rocketMask;
-    [HideInInspector] public bool hasDashed = false, isGrounded, isGrounded2, touchingKillzone, touchingHazard, touchingHazard2, touchingMud, touchingBouncyLow, touchingBouncyMed, touchingBouncyHigh, touchingRocketPart, touchingPoison, isPoisoned, takingChipDamage;
+    public LayerMask groundMask, groundMask2, killzoneMask, hazardMask, mudMask, bouncyLowMask, bouncyMedMask, bouncyHighMask, poisonMask, rocketMask, healthMask;
+    [HideInInspector] public bool hasDashed = false, isGrounded, isGrounded2, touchingKillzone, touchingHazard, touchingHazard2, touchingMud, touchingBouncyLow, touchingBouncyMed, touchingBouncyHigh, touchingRocketPart, touchingPoison, isPoisoned, takingChipDamage, touchingHealth;
 
     public int rocketPartsHad = 0, maxHealth, currentHealth;
     public float jumpHeight = 3.0f, gravity = -9.81f, speed, dashHeight, dashSpeed, dashTime;
@@ -74,7 +74,9 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingBouncyMed = Physics.CheckSphere(check.position, checkDistance, bouncyMedMask);
         touchingBouncyHigh = Physics.CheckSphere(check.position, checkDistance, bouncyHighMask);
         touchingPoison = Physics.CheckSphere(check.position, checkDistance, poisonMask);
+       // touchingHealth = Physics.CheckSphere(check.position, checkDistance, healthMask);
         Collider[] collectRocketParts = Physics.OverlapSphere(check.position, checkDistance, rocketMask);
+        Collider[] collectHealthPickup = Physics.OverlapSphere(check.position, checkDistance, healthMask);
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
@@ -161,6 +163,15 @@ public class ThirdPersonMovement : MonoBehaviour
         if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
         {
             velocity.y = -2f;
+        }
+
+        foreach(Collider healthPickup in collectHealthPickup)
+        {
+            if(currentHealth < maxHealth)
+            {
+                currentHealth++;
+            }
+            healthPickup.enabled = false; 
         }
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
