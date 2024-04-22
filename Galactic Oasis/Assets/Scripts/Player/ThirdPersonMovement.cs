@@ -144,14 +144,17 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingBouncyLow == true)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 2f ) * -2f * gravity);
+            audioSource.PlayOneShot(soundFX[6], 1);
         }
         if (touchingBouncyHigh == true)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 7f) * -2f * gravity);
+            audioSource.PlayOneShot(soundFX[6], 1);
         }
         if (touchingBouncyMed == true)
         {
             velocity.y = Mathf.Sqrt((jumpHeight * 4f) * -2f * gravity);
+            audioSource.PlayOneShot(soundFX[6], 1);
         }
 
         if ((isGrounded && velocity.y < 0) || (isGrounded2 && velocity.y < 0))
