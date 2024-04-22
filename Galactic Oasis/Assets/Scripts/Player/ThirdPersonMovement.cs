@@ -214,6 +214,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             rocketPartsHad++;
             rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
+            audioSource.PlayOneShot(soundFX[5], 1);
             enemyRocketPartGot = true;
         }
 
@@ -223,6 +224,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "RocketPart")
         {
+            audioSource.PlayOneShot(soundFX[5], 1);
             Destroy(collision.gameObject);
             
         }
