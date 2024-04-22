@@ -78,6 +78,7 @@ public class ThirdPersonMovement : MonoBehaviour
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
+            audioSource.PlayOneShot(soundFX[5], 1);
             rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
