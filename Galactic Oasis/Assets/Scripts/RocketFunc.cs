@@ -15,7 +15,7 @@ public class RocketFunc : MonoBehaviour
     
     void Update()
     {
-        if(tpm.rocketPartsHad >= rocketPartsNeeded)
+        if(tpm.rocketPartsHad >= rocketPartsNeeded && tpm.enemyRocketPartGot)
         {
             rpText.faceColor = new Color(0f, 255f, 0f);
             Destroy(gameObject);
