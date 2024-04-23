@@ -84,6 +84,20 @@ public class ThirdPersonMovement : MonoBehaviour
             rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
+
+        foreach (Collider healthPickup in collectHealthPickup)
+        {
+            Debug.Log("PICKED UP");
+            if (currentHealth < maxHealth)
+            {
+                currentHealth++;
+                audioSource.PlayOneShot(soundFX[5], 1);
+                healthBar.SetHealth(currentHealth);
+                healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
+            }
+            
+        }
+
         if (damageCooldown <= 0)
         {
             astronautRig.GetComponent<SkinnedMeshRenderer>().material = defaultAstro;
@@ -165,14 +179,7 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        foreach(Collider healthPickup in collectHealthPickup)
-        {
-            if(currentHealth < maxHealth)
-            {
-                currentHealth++;
-            }
-            healthPickup.enabled = false; 
-        }
+        
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -244,6 +251,7 @@ public class ThirdPersonMovement : MonoBehaviour
             
         }
     }
+
 
     IEnumerator Dash()
     {
