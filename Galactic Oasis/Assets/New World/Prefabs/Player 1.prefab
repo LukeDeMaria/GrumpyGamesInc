@@ -1002,6 +1002,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f1218d1bf09016647bbc2092e1aa15f3, type: 3}
   - {fileID: 8300000, guid: 300168d84a453d442bc2a63b48d8a619, type: 3}
   - {fileID: 8300000, guid: 58c7aa48ce1e7364b89d943d2e749372, type: 3}
+  - {fileID: 8300000, guid: cbe4f4251b01548438dbf9a7c89fc1cb, type: 3}
   enemyMask:
     serializedVersion: 2
     m_Bits: 512
@@ -1059,6 +1060,9 @@ MonoBehaviour:
   rocketMask:
     serializedVersion: 2
     m_Bits: 2048
+  healthMask:
+    serializedVersion: 2
+    m_Bits: 0
   hasDashed: 0
   isGrounded: 1
   isGrounded2: 0
@@ -1073,6 +1077,7 @@ MonoBehaviour:
   touchingPoison: 0
   isPoisoned: 0
   takingChipDamage: 0
+  touchingHealth: 0
   rocketPartsHad: 0
   maxHealth: 5
   currentHealth: 5
