@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RocketFunc : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class RocketFunc : MonoBehaviour
     public int rocketPartsNeeded = 5;
     public GameObject fixedRocket;
     public GameObject sceneLoad;
+    public TextMeshProUGUI rpText;
 
     public ThirdPersonMovement tpm;
     
@@ -15,6 +17,7 @@ public class RocketFunc : MonoBehaviour
     {
         if(tpm.rocketPartsHad >= rocketPartsNeeded)
         {
+            rpText.faceColor = new Color(0f, 255f, 0f);
             Destroy(gameObject);
             fixedRocket.SetActive(true);
             sceneLoad.SetActive(true);
