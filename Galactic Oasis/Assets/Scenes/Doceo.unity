@@ -19537,6 +19537,7 @@ GameObject:
   - component: {fileID: 826928432}
   - component: {fileID: 826928434}
   - component: {fileID: 826928433}
+  - component: {fileID: 826928435}
   m_Layer: 6
   m_Name: polySurface101 (1)
   m_TagString: Untagged
@@ -19608,6 +19609,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826928431}
+  m_Mesh: {fileID: -5209673357947124435, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+--- !u!64 &826928435
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826928431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5209673357947124435, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
 --- !u!1 &833888860
 GameObject:
@@ -35262,6 +35277,7 @@ GameObject:
   - component: {fileID: 1499316434}
   - component: {fileID: 1499316436}
   - component: {fileID: 1499316435}
+  - component: {fileID: 1499316437}
   m_Layer: 6
   m_Name: polySurface102 (1)
   m_TagString: Untagged
@@ -35333,6 +35349,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499316433}
+  m_Mesh: {fileID: 7391211071525590566, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+--- !u!64 &1499316437
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499316433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 7391211071525590566, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
 --- !u!1 &1501735404
 GameObject:
@@ -45652,6 +45682,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 0.01
+--- !u!1 &1882544311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1312953614599920542, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+  m_PrefabInstance: {fileID: 1882544308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1882544312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7510058419843530279, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+  m_PrefabInstance: {fileID: 1882544308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1882544313
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882544311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8482404797936473652, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
 --- !u!64 &1882544314
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45666,6 +45720,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4030573464825800490, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
+--- !u!64 &1882544315
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882544312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5209673357947124435, guid: 92ef787bde1dda848aca6a9a290af77f, type: 3}
 --- !u!1 &1887901043
 GameObject:
   m_ObjectHideFlags: 0
@@ -53355,11 +53423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.1501636e-15
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8806784188619238258, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -9.333409e-16
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8806784189229656711, guid: d7ea466305ccb88459b9f392891c8939, type: 3}
       propertyPath: m_FollowOffset.y
