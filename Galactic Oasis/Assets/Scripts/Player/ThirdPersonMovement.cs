@@ -91,11 +91,10 @@ public class ThirdPersonMovement : MonoBehaviour
             if (currentHealth < maxHealth)
             {
                 currentHealth++;
-                audioSource.PlayOneShot(soundFX[5], 1);
                 healthBar.SetHealth(currentHealth);
-                healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
             }
-            
+                audioSource.PlayOneShot(soundFX[5], 1);
+                healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
         }
 
         if (damageCooldown <= 0)
