@@ -40,7 +40,6 @@ public class EyeSpinAttack : MonoBehaviour
     {
         lookAtPlayer.enabled = false;
         towerEye.enabled = false;
-        transform.Rotate(0, 60 * Time.deltaTime, 0);
         transform.Rotate(0, rotateSpeed, 0);
         lookAtPlayer.enabled = true;
         towerEye.enabled = true;
