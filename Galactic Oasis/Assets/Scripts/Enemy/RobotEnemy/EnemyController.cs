@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     public float distance;
     public float damageCooldown = 0;
     public ThirdPersonMovement tpm;
-    //public Material invinc, defaultEnemy;
+    public ParticleSystem explosion;
 
     public GameObject RocketPart;
 
@@ -46,7 +46,8 @@ public class EnemyController : MonoBehaviour
 
         if(health <= 0)
         {
-            
+            Instantiate(explosion, transform.position, transform.rotation);
+            tpm.audioSource.PlayOneShot(tpm.soundFX[7], .4f);
             if (gameObject.tag == "Miniboss")
             {
                Instantiate(RocketPart, transform.position, transform.rotation);
