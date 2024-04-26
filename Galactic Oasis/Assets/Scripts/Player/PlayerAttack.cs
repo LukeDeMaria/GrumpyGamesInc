@@ -66,6 +66,19 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<EnemyController>().TakeDamage(1);
         }
 
+        waiter();
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            Debug.Log("We hit " + enemy.name);
+            enemy.GetComponent<EnemyController>().TakeDamage(1);
+        }
+
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 
 }
