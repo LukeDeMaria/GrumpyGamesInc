@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void SwordAttack()
     {
-        tpm.audioSource.PlayOneShot(tpm.soundFX[2], 1);
+        tpm.audioSource.PlayOneShot(tpm.soundFX[2], .2f);
         Animator anim = player.GetComponent<Animator>();
         anim.SetTrigger("IsAttacking");
     

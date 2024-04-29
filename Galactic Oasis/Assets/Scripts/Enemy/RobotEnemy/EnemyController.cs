@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         if(health <= 0)
         {
             Instantiate(explosion, transform.position, transform.rotation);
-            tpm.audioSource.PlayOneShot(tpm.soundFX[7], .4f);
+            tpm.audioSource.PlayOneShot(tpm.soundFX[7], .1f);
             if (gameObject.tag == "Miniboss")
             {
                Instantiate(RocketPart, transform.position, transform.rotation);
@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        tpm.audioSource.PlayOneShot(tpm.soundFX[4], .4f);
+        tpm.audioSource.PlayOneShot(tpm.soundFX[4], .1f);
         if (damageCooldown <= 0)
         {
             health -= damage;
