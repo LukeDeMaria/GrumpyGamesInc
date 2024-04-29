@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 using TMPro;
 
 
@@ -15,6 +16,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public LayerMask enemyMask, hazard2Mask;
     public GameObject player;
+    public SkinnedMeshRenderer playerMesh;
+    public CinemachineFreeLook cine;
+    public GameObject playerSword;
     public GameObject deathScreen;
     public Material invinc, defaultAstro;
 
@@ -277,6 +281,11 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            controller.enabled = false;
+            playerMesh.enabled = false;
+            playerSword.SetActive(false);
+            cine.m_YAxis.m_MaxSpeed = 0f;
+            cine.m_XAxis.m_MaxSpeed = 0f;
             deathScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             audioSource.mute = true;
@@ -318,6 +327,10 @@ public class ThirdPersonMovement : MonoBehaviour
     
     public void Respawn()
     {
+        playerMesh.enabled = true;
+        playerSword.SetActive(true);
+        cine.m_YAxis.m_MaxSpeed = 0.01f;
+        cine.m_XAxis.m_MaxSpeed = 1.5f;
         audioSource.mute = false;
         controller.enabled = false;
         player.transform.position = respawnPnt.transform.position;
