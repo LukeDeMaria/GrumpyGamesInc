@@ -84,7 +84,7 @@ public class ThirdPersonMovement : MonoBehaviour
         foreach (Collider rocketPart in collectRocketParts)
         {
             rocketPartsHad++;
-            audioSource.PlayOneShot(soundFX[5], 1);
+            audioSource.PlayOneShot(soundFX[5], .7f);
             rpText.text = rocketPartsHad.ToString() + "/" + rocket.rocketPartsNeeded.ToString();
             rocketPart.GetComponent<RocketPartDestroy>().DestroyPart();
         }
@@ -97,7 +97,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 currentHealth++;
                 healthBar.SetHealth(currentHealth);
             }
-                audioSource.PlayOneShot(soundFX[5], 1);
+                audioSource.PlayOneShot(soundFX[5], .6f);
                 healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
         }
 
