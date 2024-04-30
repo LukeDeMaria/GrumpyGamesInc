@@ -41,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
         tpm.audioSource.PlayOneShot(tpm.soundFX[2], .2f);
         Animator anim = player.GetComponent<Animator>();
         anim.SetTrigger("IsAttacking");
-    
+        
         SwordFunct();
         attackCooldown = maxCooldown;
     }
@@ -66,19 +66,7 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<EnemyController>().TakeDamage(1);
         }
 
-        waiter();
 
-        foreach (Collider enemy in hitEnemies)
-        {
-            Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<EnemyController>().TakeDamage(1);
-        }
-
-    }
-
-    IEnumerator waiter()
-    {
-        yield return new WaitForSeconds(0.5f);
     }
 
 }
