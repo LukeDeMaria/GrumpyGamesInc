@@ -63,6 +63,7 @@ public class ThirdPersonMovement : MonoBehaviour
         rpText = GameObject.Find("RocketPartText").GetComponent<TextMeshProUGUI>();
         Cursor.lockState = CursorLockMode.Locked;
         rpText.text = "0/" + rocket.rocketPartsNeeded.ToString();
+        fixMovement();
     }
 
     // Update is called once per frame
