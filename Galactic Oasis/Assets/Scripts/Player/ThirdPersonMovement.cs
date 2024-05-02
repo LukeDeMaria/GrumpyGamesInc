@@ -21,6 +21,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public GameObject playerSword;
     public GameObject deathScreen;
     public Material invinc, defaultAstro;
+    public GameObject winScreen;
 
     Vector3 velocity;
     public GameObject astronautRig, respawnPnt, dashBlue, dashGray;
@@ -44,11 +45,16 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public int enemiesToKill;
     public int enemiesKilled = 0;
-    public bool enemyRocketPartGot = false; 
+    public bool enemyRocketPartGot = false;
+    public string scenenow;
+    Scene currentScn;
+    
 
 
     void Start()
     {
+        currentScn = SceneManager.GetActiveScene();
+        scenenow = currentScn.name;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         currentScene = SceneManager.GetActiveScene();
@@ -99,6 +105,17 @@ public class ThirdPersonMovement : MonoBehaviour
             }
                 audioSource.PlayOneShot(soundFX[5], .6f);
                 healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
+        }
+
+        if (enemiesKilled == enemiesToKill && rocketPartsHad >= rocket.rocketPartsNeeded && scenenow == "Mortuus")
+        {
+            controller.enabled = false;
+            playerMesh.enabled = false;
+            playerSword.SetActive(false);
+            cine.m_YAxis.m_MaxSpeed = 0f;
+            cine.m_XAxis.m_MaxSpeed = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            winScreen.SetActive(true);
         }
 
         if (damageCooldown <= 0)
@@ -340,6 +357,17 @@ public class ThirdPersonMovement : MonoBehaviour
         Debug.Log("Dead!!!");
             Debug.Log("Player Position After Respawn: " + player.transform.position);
             Debug.Log("Rig Position After Respawn: " + astronautRig.transform.position);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void fixMovement()
+    {
+        playerMesh.enabled = true;
+        playerSword.SetActive(true);
+        cine.m_YAxis.m_MaxSpeed = 0.01f;
+        cine.m_XAxis.m_MaxSpeed = 1.5f;
+        audioSource.mute = false;
+        controller.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
     }
     }
