@@ -70,6 +70,7 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
 
+        if (winScreen == null) fixMovement();
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
@@ -85,7 +86,7 @@ public class ThirdPersonMovement : MonoBehaviour
         touchingBouncyMed = Physics.CheckSphere(check.position, checkDistance, bouncyMedMask);
         touchingBouncyHigh = Physics.CheckSphere(check.position, checkDistance, bouncyHighMask);
         touchingPoison = Physics.CheckSphere(check.position, checkDistance, poisonMask);
-       // touchingHealth = Physics.CheckSphere(check.position, checkDistance, healthMask);
+        // touchingHealth = Physics.CheckSphere(check.position, checkDistance, healthMask);
         Collider[] collectRocketParts = Physics.OverlapSphere(check.position, checkDistance, rocketMask);
         Collider[] collectHealthPickup = Physics.OverlapSphere(check.position, checkDistance, healthMask);
         foreach (Collider rocketPart in collectRocketParts)
@@ -104,19 +105,31 @@ public class ThirdPersonMovement : MonoBehaviour
                 currentHealth++;
                 healthBar.SetHealth(currentHealth);
             }
-                audioSource.PlayOneShot(soundFX[5], .6f);
-                healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
+            audioSource.PlayOneShot(soundFX[5], .6f);
+            healthPickup.GetComponent<RocketPartDestroy>().DestroyPart();
         }
 
         if (enemiesKilled == enemiesToKill && rocketPartsHad >= rocket.rocketPartsNeeded && scenenow == "Mortuus")
         {
-            controller.enabled = false;
-            playerMesh.enabled = false;
-            playerSword.SetActive(false);
-            cine.m_YAxis.m_MaxSpeed = 0f;
-            cine.m_XAxis.m_MaxSpeed = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            winScreen.SetActive(true);
+            if (winScreen != null) winScreen.SetActive(true);
+        }
+
+        if (winScreen != null)
+        {
+            if (winScreen.activeInHierarchy == true)
+            {
+                controller.enabled = false;
+                cine.m_YAxis.m_MaxSpeed = 0f;
+                cine.m_XAxis.m_MaxSpeed = 0f;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+        else
+        {
+            controller.enabled = true;
+            cine.m_YAxis.m_MaxSpeed = 0.01f;
+            cine.m_XAxis.m_MaxSpeed = 1.5f;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if (damageCooldown <= 0)
@@ -130,14 +143,14 @@ public class ThirdPersonMovement : MonoBehaviour
             hasDashed = false;
             dashBlue.SetActive(true);
             dashGray.SetActive(false);
-            if(isGrounded == true)
+            if (isGrounded == true)
             {
                 isPoisoned = false;
                 takingChipDamage = false;
             }
-            if(isGrounded2 == true)
+            if (isGrounded2 == true)
             {
-                isPoisoned = true; 
+                isPoisoned = true;
                 takingChipDamage = true;
             }
 
@@ -152,7 +165,7 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingHazard == true)
         {
             TakeDamage(2);
-            
+
         }
         if (touchingHazard2 == true)
         {
@@ -162,12 +175,12 @@ public class ThirdPersonMovement : MonoBehaviour
         if (touchingPoison == true)
         {
             isPoisoned = true;
-            if(takingChipDamage == false)
+            if (takingChipDamage == false)
             {
                 StartCoroutine(PoisonChipDamage());
-                takingChipDamage=true;
+                takingChipDamage = true;
             }
-            
+
         }
 
         if (touchingMud == true)
@@ -181,7 +194,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (touchingBouncyLow == true)
         {
-            velocity.y = Mathf.Sqrt((jumpHeight * 2f ) * -2f * gravity);
+            velocity.y = Mathf.Sqrt((jumpHeight * 2f) * -2f * gravity);
             audioSource.PlayOneShot(soundFX[6], 1);
         }
         if (touchingBouncyHigh == true)
@@ -200,15 +213,27 @@ public class ThirdPersonMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        
-
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontalInput, 0f, verticalInput).normalized;
-
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+
+        if (controller.enabled == true && winScreen == null)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
+        else if (controller.enabled == true && winScreen.activeInHierarchy == false)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
+
+
+
+
 
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0 && (isGrounded == true || isGrounded2 == true))
         {
@@ -363,12 +388,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public void fixMovement()
     {
-        playerMesh.enabled = true;
-        playerSword.SetActive(true);
+        controller.enabled = true;
         cine.m_YAxis.m_MaxSpeed = 0.01f;
         cine.m_XAxis.m_MaxSpeed = 1.5f;
         audioSource.mute = false;
-        controller.enabled = true;
+        
         Cursor.lockState = CursorLockMode.Locked;
     }
     }
