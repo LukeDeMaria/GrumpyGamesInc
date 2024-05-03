@@ -999,10 +999,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f7b5400b4cbec7747b79d561d7069790, type: 3}
   - {fileID: 8300000, guid: 9c56a1d803d1530458b752aae76e9345, type: 3}
   - {fileID: 8300000, guid: f1218d1bf09016647bbc2092e1aa15f3, type: 3}
-  - {fileID: 8300000, guid: f1218d1bf09016647bbc2092e1aa15f3, type: 3}
+  - {fileID: 8300000, guid: a17b233477aa2344a8ece9dfd81a10e7, type: 3}
   - {fileID: 8300000, guid: 300168d84a453d442bc2a63b48d8a619, type: 3}
   - {fileID: 8300000, guid: 58c7aa48ce1e7364b89d943d2e749372, type: 3}
-  - {fileID: 8300000, guid: cbe4f4251b01548438dbf9a7c89fc1cb, type: 3}
+  - {fileID: 8300000, guid: 2f09c24e2dbf5284b85cc0f1d42cc28b, type: 3}
   - {fileID: 8300000, guid: a5bb853397836764a9cca6d88d246fcf, type: 3}
   enemyMask:
     serializedVersion: 2
@@ -1011,9 +1011,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   player: {fileID: 9012915200617251544}
+  playerMesh: {fileID: 0}
+  cine: {fileID: 0}
+  playerSword: {fileID: 0}
   deathScreen: {fileID: 0}
   invinc: {fileID: 2100000, guid: b4371c8d7c3f9b0448837c5ebdd7b270, type: 2}
   defaultAstro: {fileID: 2100000, guid: 26cf7e8275de35b40a16e6c5fa7cd112, type: 2}
+  winScreen: {fileID: 0}
   astronautRig: {fileID: 2506876041608349155}
   respawnPnt: {fileID: 0}
   dashBlue: {fileID: 0}
@@ -1092,6 +1096,7 @@ MonoBehaviour:
   enemiesToKill: 17
   enemiesKilled: 0
   enemyRocketPartGot: 0
+  scenenow: 
 --- !u!64 &6369742261844155624
 MeshCollider:
   m_ObjectHideFlags: 0
