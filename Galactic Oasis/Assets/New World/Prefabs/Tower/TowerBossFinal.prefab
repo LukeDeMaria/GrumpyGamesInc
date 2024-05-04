@@ -33,7 +33,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5067183890585366224}
-  - {fileID: 9180262594795883882}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -118,6 +117,7 @@ MonoBehaviour:
   distance: 0
   damageCooldown: 0
   tpm: {fileID: 0}
+  explosion: {fileID: 0}
   RocketPart: {fileID: 0}
   hpBar: {fileID: 0}
 --- !u!1001 &4744816654138170802
@@ -125,35 +125,35 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4744816654825049930}
+    m_TransformParent: {fileID: 5067183890585366224}
     m_Modifications:
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.6652453
+      value: 0.6929637
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.6652453
+      value: 0.6929637
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.6652453
+      value: 0.6929637
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.057405032
+      value: 0.014926934
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -31.707182
+      value: 0.0021319198
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5827459
+      value: 0.41151392
       objectReference: {fileID: 0}
     - target: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -214,11 +214,6 @@ MonoBehaviour:
   laserPrefab: {fileID: 1377215279443749033, guid: c94ebbb08b578f541a0eedea7f96881b, type: 3}
   shootMinTime: 3.5
   shootMaxTime: 5.5
---- !u!4 &9180262594795883882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4521088095354753240, guid: c3148e993d490e048b6c5203d0beca2b, type: 3}
-  m_PrefabInstance: {fileID: 4744816654138170802}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6932390822296700051
 PrefabInstance:
   m_ObjectHideFlags: 0
