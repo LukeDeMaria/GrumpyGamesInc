@@ -70,7 +70,8 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
 
-        if (winScreen == null) fixMovement();
+        if (winScreen == null && scenenow == "Mortuus") fixMovement();
+        if (deathScreen.activeInHierarchy == true) Cursor.lockState = CursorLockMode.None; ;
         if (damageCooldown > 0)
         {
             damageCooldown -= Time.deltaTime;
@@ -126,10 +127,14 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         else
         {
-            controller.enabled = true;
-            cine.m_YAxis.m_MaxSpeed = 0.01f;
-            cine.m_XAxis.m_MaxSpeed = 1.5f;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (deathScreen.activeInHierarchy == false)
+            {
+                controller.enabled = true;
+                cine.m_YAxis.m_MaxSpeed = 0.01f;
+                cine.m_XAxis.m_MaxSpeed = 1.5f;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            
         }
 
         if (damageCooldown <= 0)
@@ -324,11 +329,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
-            controller.enabled = false;
-            playerMesh.enabled = false;
-            playerSword.SetActive(false);
-            cine.m_YAxis.m_MaxSpeed = 0f;
-            cine.m_XAxis.m_MaxSpeed = 0f;
+            
             deathScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             audioSource.mute = true;
